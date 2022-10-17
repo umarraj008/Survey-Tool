@@ -1,0 +1,16 @@
+footer {
+    width: 100%;
+    display: block;
+    background-color: rgb(41, 41, 41);
+    height: 200px;
+}
+
+footer nav {
+    display: flex;
+    font-size: 20px;
+}
+
+footer nav a {
+    margin-top: 10px;
+    color: white;
+}
