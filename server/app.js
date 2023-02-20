@@ -1,20 +1,20 @@
-const express = require("express");
-const mysql = require("mysql");
-const dotenv = require("dotenv");
-const bodyParser = require("body-parser");
-const htmlspecialchars = require("htmlspecialchars");
-const path = require("path");
+const Express = require("express");
+const Mysql = require("mysql");
+const Dotenv = require("dotenv");
+const BodyParser = require("body-parser");
+const Htmlspecialchars = require("htmlspecialchars");
+const Path = require("path");
 
-const app = express();
+const app = Express();
 const port = process.env.PORT || 3000;
 const address = "localhost";
 const path = __dirname.replace("server", "public")
-const urlencodedParser = bodyParser.urlencoded({extended: false});
+const urlencodedParser = BodyParser.urlencoded({extended: false});
 
-dotenv.config({path: __dirname + "\\.env"});
+Dotenv.config({path: __dirname + "\\.env"});
 
 //Static files routing
-app.use(express.static("public"));
+app.use(Express.static("public"));
 app.get('/', (req, res) => {  
     res.sendFile(path);
 });
@@ -41,12 +41,12 @@ app.post("/register", urlencodedParser, (req, res) => {
     confirmPassword = confirmPassword.trim(); 
 
     //html special characters
-    firstName = htmlspecialchars(firstName);
-    lastName = htmlspecialchars(lastName);
-    dateOfBirth = htmlspecialchars(dateOfBirth);
-    email = htmlspecialchars(email);
-    password = htmlspecialchars(password);
-    confirmPassword = htmlspecialchars(confirmPassword);
+    firstName = Htmlspecialchars(firstName);
+    lastName = Htmlspecialchars(lastName);
+    dateOfBirth = Htmlspecialchars(dateOfBirth);
+    email = Htmlspecialchars(email);
+    password = Htmlspecialchars(password);
+    confirmPassword = Htmlspecialchars(confirmPassword);
 
     //check if empty
     if (firstName.length <= 0) error = {status: true, message: "Please enter first name."};
@@ -70,10 +70,9 @@ app.post("/register", urlencodedParser, (req, res) => {
     //check password confirm match
     if (password != confirmPassword) error = {status: true, message: "Confirm password doesn't match."};
 
-    //check for errors
+    //If there are errors then redirect user to register page with error message
     if (error.status) {
-        res.setHeader
-        res.sendFile(path.join("register.html?error=" + error.message));
+        res.redirect("register.html?error=" + error.message);
         return;
     }
 
@@ -105,7 +104,7 @@ app.post("/login", urlencodedParser, (req, res) => {
 });
 
 //Database connection setup
-var db = mysql.createPool({
+var db = Mysql.createPool({
     host:     process.env.DATABASE_HOST,
     database: process.env.DATABASE_NAME,
     user:     process.env.DATABASE_USERNAME,
