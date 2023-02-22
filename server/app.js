@@ -80,19 +80,34 @@ app.post("/register", urlencodedParser, (req, res) => {
     db.query("SELECT * FROM user WHERE email='" + email + "'", (error, results) => {
         if (!error) {
             if (results.length > 0) {
-                //send error message
+                //more than 1 user exists with email -> send error message
+                res.redirect("register.html?error=Email is already used by another account.");
+                return;
             } else {
                 //add user to db
-                db.query("INSERT INTO user", (error, results) => {
+                db.query("INSERT INTO user (first_name, last_name, date_of_birth, email, password, account_verified) VALUES ('" + 
+                        firstName + "', '" + 
+                        lastName + "', '" + 
+                        dateOfBirth + "', '" + 
+                        email + "', '" + 
+                        password + "', '" + 
+                        0 + "')", (error, results) => {
+                            
                     if (!error) {
                         //redirect user
+                        res.redirect("dashboard.html?notif=Welcome to Cool Surveys");
+                        return;
                     } else {
                         //send error message
+                        res.redirect("register.html?error=Server Error: " + error);
+                        return;
                     }
                 });
             }
         } else {
             //send error message
+            res.redirect("register.html?error=Server Error: " + error);
+            return;
         }
     });
 });
