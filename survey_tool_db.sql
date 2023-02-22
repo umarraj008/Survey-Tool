@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2023 at 04:32 AM
+-- Generation Time: Feb 22, 2023 at 10:16 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -166,6 +166,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_ID`, `first_name`, `last_name`, `date_of_birth`, `email`, `password`, `date_created`, `account_verified`) VALUES
+(1, 'Umar', 'Rajput', '2023-02-20', 'aaa@aaa.com', 'a', '2023-02-20 17:34:48', 0);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -288,7 +295,7 @@ ALTER TABLE `survey_response`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
