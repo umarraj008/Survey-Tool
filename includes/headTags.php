@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <meta charset="utf-8">
 <meta name="keywords" content="HTML, CSS, JavaScript, Survey, Survey tool, Questionaire">
 <meta name="description" content="This is a Online Survey Tool">
