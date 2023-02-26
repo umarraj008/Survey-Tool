@@ -3,47 +3,47 @@
 include_once 'dbConnection.php';
 
 // Check if data exists and is not empty, else give error
-$firstName = checkData('firstName', 'First Name Is Required!');
-$lastName = checkData('lastName', 'Last Name Is Required!');
-$dateOfBirth = checkData('dateOfBirth', 'Date Of Birth Is Required!');
+$firstName = checkData('first_name', 'First Name Is Required!');
+$lastName = checkData('last_name', 'Last Name Is Required!');
+$dateOfBirth = checkData('date_of_birth', 'Date Of Birth Is Required!');
 $email = checkData('email', 'Email Is Required!');
 $password = checkData('password', 'Password Is Required!');
-$passwordConfirm = checkData('passwordConfirm', 'Confirm Password Is Required!');
+$passwordConfirm = checkData('confirm_password', 'Confirm Password Is Required!');
 
-// Check email contains aston email, else give error
-if (!str_contains($email, "@aston.ac.uk")) {
-    header("Location: ../signupPage.php?error=Email Must Be Aston Email!");
+// Check email contains @, else give error
+if (!str_contains($email, "@")) {
+    header("Location: ../signup.php?error=Incorrect Email Format.");
     exit();
 }
 
 // Check if password and password confirmation match, else give error
 if ($password !== $passwordConfirm) {
-    header("Location: ../signupPage.php?error=Password Confirmation Does Not Match!");
+    header("Location: ../signup.php?error=Password Confirmation Does Not Match!");
     exit();
 }
 
 // Check all boxes dont exceed character limit, else give error
-if (strlen($firstName) > 25) {
-    header("Location: ../signupPage.php?error=First Name is Too Long!");
+if (strlen($firstName) > 50) {
+    header("Location: ../signup.php?error=First Name is Too Long!");
     exit();
-} else if (strlen($lastName) > 25) {
-    header("Location: ../signupPage.php?error=Last Name is Too Long!");
+} else if (strlen($lastName) > 50) {
+    header("Location: ../signup.php?error=Last Name is Too Long!");
     exit();
-} else if (strlen($phoneNumber) > 11) {
-    header("Location: ../signupPage.php?error=Phone Number is Too Long!");
+} else if (strlen($dateOfBirth) > 11) {
+    header("Location: ../signup.php?error=Date of Birth is Too Long!");
     exit();
-} else if (strlen($email) > 40) {
-    header("Location: ../signupPage.php?error=Email is Too Long!");
+} else if (strlen($email) > 100) {
+    header("Location: ../signup.php?error=Email is Too Long!");
     exit();
-} else if (strlen($password) > 40) {
-    header("Location: ../signupPage.php?error=Password is Too Long!");
+} else if (strlen($password) > 100) {
+    header("Location: ../signup.php?error=Password is Too Long!");
     exit();
 }
 
 // Check email is not already used in database, else give error
-$users = $db->query("SELECT * FROM users WHERE email='$email'");
+$users = $db->query("SELECT * FROM user WHERE email='$email'");
 if ($users->rowCount() > 0) {
-    header("Location: ../signupPage.php?error=Account With Email Already Exists!");
+    header("Location: ../signup.php?error=Account With Email Already Exists!");
     exit();
 }
 
@@ -52,21 +52,21 @@ $password = password_hash($password, PASSWORD_DEFAULT);
 
 // Add user account to database
 $db->query(
-    "INSERT INTO users (firstName, lastName, email, password, phoneNumber)
-     VALUES ('$firstName', '$lastName', '$email', '$password', '$phoneNumber')"
+    "INSERT INTO user (first_name, last_name, date_of_birth, email, password, account_verified)
+     VALUES ('$firstName', '$lastName', '$dateOfBirth', '$email', '$password', '0')"
 );
 
 // After making account check it exists then redirect to home and sign in
-$user = $db->query("SELECT * FROM users WHERE email='$email'");
+$user = $db->query("SELECT * FROM user WHERE email='$email'");
 if ($user->rowCount() == 1) {
     // sign the user in.
     session_start();
     $_SESSION['user'] = $user->fetchObject();
-    header("Location: ../index.php?message=Welcome {$_SESSION['user']->firstName}");
+    header("Location: ../dashboard.php?message=Welcome {$_SESSION['user']->firstName}");
     exit();
 } else {
     // If the account was not created then there was an error
-    header("Location: ../signupPage.php?error=Error Making Account!");
+    header("Location: ../signup.php?error=Error Making Account!");
     exit();
 }
 
@@ -83,6 +83,6 @@ function checkData($dataName, $errorMessage) {
         }
     }
 
-    header("Location: ../signupPage.php?error=$errorMessage");
+    header("Location: ../signup.php?error=$errorMessage");
     exit();
 }

@@ -6,5 +6,5 @@ session_unset();
 // Destroy the session
 session_destroy();
 // Return the user back to the home page.
-header("Location: ../index.php?message=Successfully Logged Out!");
+header("Location: ../index.php?notif=Successfully Logged Out!");
 exit();
