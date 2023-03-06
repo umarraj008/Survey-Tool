@@ -1,5 +1,35 @@
 footer {
     width: 100%;
     display: block;
-    height: 200px;
+    height: 300px;
+    float: left;
+    background-color: red;
+}
+
+footer #outer-container {
+    margin-top: 50px;
+    width: 75%;
+    height: 80%;
+    background-color: lime;
+    display: flex;
+}
+
+footer #image-container {
+    width: 5%;
+    background-color: blue;
+}
+
+footer .container-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+footer .inner-container {
+    background-color: orange;
+    width: 15%;
+    float: left;
+}
+
+footer .inner-container a {
+    text-decoration: none;
 }

@@ -10,6 +10,13 @@
         <!-- Main Content -->
         <main>
             <h2>Dashboard</h2>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Surveys</a>
+                <a href="#">Polls</a>
+                <a href="#">Settings</a>
+                <a href="#">Create Survey</a>
+            </nav>
         </main>
             
         <!-- Footer Section -->

@@ -9,8 +9,15 @@
         
         <!-- Main Content -->
         <main>
-            <h2>The simplest and fastest way to make surveys</h2>
-            <p>Create professional looking surveys with our free to use tool, with real-time data analysis, and many more features to make your experience as quick and easy as possible.</p>
+            <div>
+                <h1>The simplest and fastest way to make surveys</h1>
+                <h2>Create professional looking surveys with our free to use tool, with real-time data analysis, and many more features to make your experience as quick and easy as possible.</h2>
+                <a href="#">Get Started - It's Free!</a>
+                <a href="#">More Information About Us</a>
+            </div>
+            <div>
+                <img src="" width="100px" height="100px" />
+            </div>
         </main>
             
         <!-- Footer Section -->
