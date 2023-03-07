@@ -4,7 +4,7 @@
             <div id="image-container">
                 <img src="./resources/images/placeholder.png" height="70%" />
             </div>
-            <h1 id="title">Survey Tool</h1>
+            <h1 id="title">Cool Surveys</h1>
         </div>
         <nav>
             <div id="account-button-container">

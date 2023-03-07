@@ -16,7 +16,7 @@
                 <a href="#">More Information About Us</a>
             </div>
             <div>
-                <img src="" width="100px" height="100px" />
+                <img src="./resources/images/placeholder.png" width="100px" height="100px" />
             </div>
         </main>
             
