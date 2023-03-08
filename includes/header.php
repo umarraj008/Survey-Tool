@@ -11,7 +11,7 @@
                 <?php 
                     if (isset($_SESSION["user"])) { 
                 ?>
-                        <a href="./php/logout.php">Logout</a> 
+                        <a href="./php/logout.php"><?php echo $_SESSION["user"]->first_name; ?></a> 
                         <a href="./dashboard.php">Dashboard</a>
                 <?php
                     } else { 

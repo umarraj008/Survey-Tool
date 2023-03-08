@@ -1,0 +1,88 @@
+main h1 {
+    padding-top: 50px;
+}
+
+#create-survey-button-container {
+    width: 100%;
+    display: block;
+    height: 50px;
+    background-color: aquamarine;
+}
+
+#create-survey-button-container a {
+    float: right;
+    height: 100%;
+    width: max-content;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: grid;
+    align-items: center;
+    background-color: chartreuse;
+}
+
+.survey-item-container {
+    width: 100%;
+    background-color: deepskyblue;
+    padding: 0;
+    list-style: none;
+}
+
+.survey-item {
+    width: 100%;
+    background-color: crimson;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    height: 70px;
+}
+
+.survey-item p, img {
+    float: left;
+    font-size: 18px;
+}
+
+.survey-item #survey-item-title {
+    background-color: coral;
+    width: 80%;
+    margin-left: 10px;
+}
+
+.survey-item #survey-item-questions {
+    background-color: rgb(80, 229, 255);
+    width: 10%;
+    margin-left: 10px;
+}
+
+.survey-item #survey-item-participants {
+    background-color: rgb(255, 80, 226);
+    width: 10%;
+    margin-left: 10px;
+}
+
+.survey-item #survey-item-kabab-menu {
+    background-color: rgb(223, 255, 80);
+    width: 20px;
+    height: 40px;
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: grid;
+    align-items: center;
+}
+
+.survey-item #survey-item-kabab-menu:hover {
+    cursor: pointer;
+}
+
+.survey-item #survey-item-kabab-menu div {
+    border-radius: 100%;
+    background-color: black;
+    /* border: 0.1em solid black; */
+    width: 8px;
+    height: 8px;
+}
+
+hr {
+    border: 1px solid black;
+}
