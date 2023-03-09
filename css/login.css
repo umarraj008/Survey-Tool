@@ -14,6 +14,7 @@ form h1 {
 form input {
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
 }
 
 form input[type=email],[type=password] {

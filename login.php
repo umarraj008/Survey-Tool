@@ -36,7 +36,7 @@
                 <br>
                 <br>
 
-                <input type="submit" name="submit" placeholder="Signup" alt="Login Button" value="Login">
+                <input type="submit" name="submit" placeholder="Login" alt="Login Button" value="Login">
                 <br>
                 <br>
                 <a href="./signup.php">Don't have an account?</a>
