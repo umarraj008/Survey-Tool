@@ -13,7 +13,7 @@
             <!-- Side Menu -->
             <div id="side-menu">
                 <ul>
-                    <h2>Questions <span>(Drag to add)</span></h2>
+                    <h2>Questions <span>(Drag and drop)</span></h2>
                     <br>
                     <li>Text Box</li>
                     <li>Multiple Choice</li>
@@ -42,7 +42,7 @@
                     <!-- Title and publish survey button -->
                     <div id="publish-survey-button-container">
                         <h1>Create New Survey</h1>
-                        <form id="survey" action="#" method="POST">
+                        <form id="survey" action="./php/publishSurvey.php" method="POST">
                         <input type="submit" value="Publish Survey" />
                     </div>
 
@@ -91,7 +91,7 @@
                                 </div>
                                 <div id="right-container">
                                     <p>Question Text</p>
-                                    <input type="text">
+                                    <input type="text" name="question1" form="survey" value="" placeholder="Enter your question here...">
                                 </div>
                             </div>
                         </li>
@@ -127,7 +127,7 @@
                                 </div>
                                 <div id="right-container">
                                     <p>Question Text</p>
-                                    <input type="text">
+                                    <input type="text" name="question2" form="survey" value="" placeholder="Enter your question here...">
                                 </div>
                             </div>
                         </li>
@@ -163,7 +163,7 @@
                                 </div>
                                 <div id="right-container">
                                     <p>Question Text</p>
-                                    <input type="text">
+                                    <input type="text" name="question3" form="survey" value="" placeholder="Enter your question here...">
                                 </div>
                             </div>
                         </li>

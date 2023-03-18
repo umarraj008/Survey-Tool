@@ -29,7 +29,7 @@ if (!str_contains($email, "@")) { // Email contains @aston.ac.uk
 }
 
 // Check if user is in the database
-$sqlGetUser = "SELECT * FROM user WHERE email='$email'";
+$sqlGetUser = "SELECT * FROM users WHERE email='$email'";
 $result = $db->query($sqlGetUser);
 
 // If there is a row that means the user exists

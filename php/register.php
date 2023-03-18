@@ -41,7 +41,7 @@ if (strlen($firstName) > 50) {
 }
 
 // Check email is not already used in database, else give error
-$users = $db->query("SELECT * FROM user WHERE email='$email'");
+$users = $db->query("SELECT * FROM users WHERE email='$email'");
 if ($users->rowCount() > 0) {
     header("Location: ../signup.php?error=Account With Email Already Exists!");
     exit();
@@ -52,12 +52,12 @@ $password = password_hash($password, PASSWORD_DEFAULT);
 
 // Add user account to database
 $db->query(
-    "INSERT INTO user (first_name, last_name, date_of_birth, email, password, account_verified)
+    "INSERT INTO users (first_name, last_name, date_of_birth, email, password, account_verified)
      VALUES ('$firstName', '$lastName', '$dateOfBirth', '$email', '$password', '0')"
 );
 
 // After making account check it exists then redirect to home and sign in
-$user = $db->query("SELECT * FROM user WHERE email='$email'");
+$user = $db->query("SELECT * FROM users WHERE email='$email'");
 if ($user->rowCount() == 1) {
     // sign the user in.
     session_start();
