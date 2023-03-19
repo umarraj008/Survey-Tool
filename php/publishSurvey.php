@@ -1,4 +1,7 @@
 <?php
+// Resume session
+session_start();
+
 // Import database connection
 include_once 'dbConnection.php';
 
@@ -21,6 +24,15 @@ if (empty($surveyDescription)) {
 $db->query(
     "INSERT INTO surveys (name, description, status) VALUES ('$surveyTitle', '$surveyDescription', '1')"
 );
+
+// Add to survey owner
+$surveyID = $db->lastInsertId();
+$userID = $_SESSION["user"]->user_ID;
+if ($db->query(
+    "INSERT INTO survey_owner (user_ID, survey_ID) VALUES ('$userID', '$surveyID')"
+)) {
+    header("Location: ../dashboard.php");
+}
 
 // function to format data correctly
 function formatData($data) {
