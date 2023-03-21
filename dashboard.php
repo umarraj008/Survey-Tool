@@ -8,6 +8,10 @@
         <!-- Header Section -->
         <?php include_once("./includes/header.php"); ?>
         
+        <!-- Scripts -->
+        <script>
+            function openSurveyResults(id) { location.href = "viewResults.php?sid=" + id; }
+        </script>
         <!-- Main Content -->
         <main>
             <h1>Dashboard</h1>
@@ -38,7 +42,7 @@
 
                         foreach($surveys as $survey) {
                             ?>
-                            <li class="survey-item">
+                            <li class="survey-item" onclick="openSurveyResults(<?php echo($survey['survey_ID'])?>)">
                                 <p id="survey-item-title"><?php echo $survey["name"]; ?></p>
                                 <p id="survey-item-questions">0 Questions</p>
                                 <p id="survey-item-participants">0 Participants</p>
