@@ -13,7 +13,7 @@
             <!-- Side Menu -->
             <div id="side-menu">
                 <ul>
-                    <h2>Questions <span>(Drag to add)</span></h2>
+                    <h2>Questions <span>(Drag and drop)</span></h2>
                     <br>
                     <li>Text Box</li>
                     <li>Multiple Choice</li>
@@ -42,7 +42,7 @@
                     <!-- Title and publish survey button -->
                     <div id="publish-survey-button-container">
                         <h1>Create New Survey</h1>
-                        <form id="survey" action="#" method="POST">
+                        <form id="survey" action="./php/publishSurvey.php" method="POST">
                         <input type="submit" value="Publish Survey" />
                     </div>
 
@@ -58,20 +58,115 @@
                             <textarea name="survey_description" form="survey" placeholder="Survey description goes here..."></textarea>
                         </div>
                     </div>
-                    <br>
                     <hr>
-                    <br>
                     <ul id="questions-container">
-                        <li>Question 1</li>
-                        <li>Question 2</li>
-                        <li>Question 3</li>
-                        <li>Question 4</li>
-                        <li>Question 5</li>
-                        <li>Question 6</li>
-                        <li>Question 7</li>
-                        <li>Question 8</li>
-                        <li>Question 9</li>
-                        <li>Question 10</li>
+                        <li class="open-ended-question">
+                            <div id="top-container">
+                                <div id="question-number-container">
+                                    <p>Q1</p>
+                                </div>
+                                <div id="question-type-container">
+                                    <p>Text Box Question</p>
+                                </div>
+                                <div id="delete-question-container">
+                                    <a href="">Delete Question</a>
+                                </div>
+                            </div>
+                            <div id="bottom-container">
+                                <div id="left-container">
+                                    <div class="kabab-menu">
+                                        <div class="dot-container">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="dot-container">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="dot-container">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="right-container">
+                                    <p>Question Text</p>
+                                    <input type="text" name="question1" form="survey" value="" placeholder="Enter your question here...">
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="open-ended-question">
+                            <div id="top-container">
+                                <div id="question-number-container">
+                                    <p>Q2</p>
+                                </div>
+                                <div id="question-type-container">
+                                    <p>Text Box Question</p>
+                                </div>
+                                <div id="delete-question-container">
+                                    <a href="">Delete Question</a>
+                                </div>
+                            </div>
+                            <div id="bottom-container">
+                                <div id="left-container">
+                                    <div class="kabab-menu">
+                                        <div class="dot-container">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="dot-container">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="dot-container">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="right-container">
+                                    <p>Question Text</p>
+                                    <input type="text" name="question2" form="survey" value="" placeholder="Enter your question here...">
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="open-ended-question">
+                            <div id="top-container">
+                                <div id="question-number-container">
+                                    <p>Q3</p>
+                                </div>
+                                <div id="question-type-container">
+                                    <p>Text Box Question</p>
+                                </div>
+                                <div id="delete-question-container">
+                                    <a href="">Delete Question</a>
+                                </div>
+                            </div>
+                            <div id="bottom-container">
+                                <div id="left-container">
+                                    <div class="kabab-menu">
+                                        <div class="dot-container">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="dot-container">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="dot-container">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="right-container">
+                                    <p>Question Text</p>
+                                    <input type="text" name="question3" form="survey" value="" placeholder="Enter your question here...">
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

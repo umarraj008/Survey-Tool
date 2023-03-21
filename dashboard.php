@@ -8,6 +8,10 @@
         <!-- Header Section -->
         <?php include_once("./includes/header.php"); ?>
         
+        <!-- Scripts -->
+        <script>
+            function openSurveyResults(id) { location.href = "viewResults.php?sid=" + id; }
+        </script>
         <!-- Main Content -->
         <main>
             <h1>Dashboard</h1>
@@ -20,50 +24,40 @@
 
             <ul class="survey-item-container">
                 <h2>Active Surveys</h2>
+                
+                <?php
+                    // Database connection
+                    include_once("./php/dbConnection.php");
 
-                <li class="survey-item">
-                    <p id="survey-item-title">Survey Title</p>
-                    <p id="survey-item-questions">0 Questions</p>
-                    <p id="survey-item-participants">0 Participants</p>
-                    <div id="survey-item-kabab-menu">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </li>
+                    // Get user id
+                    $userID = $_SESSION["user"]->user_ID;
 
-                <li class="survey-item">
-                    <p id="survey-item-title">Survey Title</p>
-                    <p id="survey-item-questions">0 Questions</p>
-                    <p id="survey-item-participants">0 Participants</p>
-                    <div id="survey-item-kabab-menu">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </li>
+                    // Get all user created surveys that are active
+                    $getAllUserSurveysSQL = "SELECT s.* FROM surveys AS s INNER JOIN survey_owner AS so ON s.survey_ID=so.survey_ID AND so.user_ID='$userID' AND s.status='1'";
+                    $surveys = $db->query($getAllUserSurveysSQL);
 
-                <li class="survey-item">
-                    <p id="survey-item-title">Survey Title</p>
-                    <p id="survey-item-questions">0 Questions</p>
-                    <p id="survey-item-participants">0 Participants</p>
-                    <div id="survey-item-kabab-menu">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </li>
+                    // Print each survey as a list item
+                    if ($surveys->rowCount() > 0) {
+                        $surveys = $surveys->fetchAll();
 
-                <li class="survey-item">
-                    <p id="survey-item-title">Survey Title</p>
-                    <p id="survey-item-questions">0 Questions</p>
-                    <p id="survey-item-participants">0 Participants</p>
-                    <div id="survey-item-kabab-menu">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </li>
+                        foreach($surveys as $survey) {
+                            ?>
+                            <li class="survey-item" onclick="openSurveyResults(<?php echo($survey['survey_ID'])?>)">
+                                <p id="survey-item-title"><?php echo $survey["name"]; ?></p>
+                                <p id="survey-item-questions">0 Questions</p>
+                                <p id="survey-item-participants">0 Participants</p>
+                                <div id="survey-item-kabab-menu">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </li> 
+                            <?php
+                        }
+                    }
+
+                ?>
+
             </ul>
             <hr>
             <br>
@@ -71,49 +65,33 @@
             <ul class="survey-item-container">
                 <h2>Closed Surveys</h2>
                 
-                <li class="survey-item">
-                    <p id="survey-item-title">Survey Title</p>
-                    <p id="survey-item-questions">0 Questions</p>
-                    <p id="survey-item-participants">0 Participants</p>
-                    <div id="survey-item-kabab-menu">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </li>
+                <?php
+                    // Get all user created surveys that are not active
+                    $getAllUserSurveysSQL = "SELECT s.* FROM surveys AS s INNER JOIN survey_owner AS so ON s.survey_ID=so.survey_ID AND so.user_ID='$userID' AND s.status='0'";
+                    $surveys = $db->query($getAllUserSurveysSQL);
 
-                <li class="survey-item">
-                    <p id="survey-item-title">Survey Title</p>
-                    <p id="survey-item-questions">0 Questions</p>
-                    <p id="survey-item-participants">0 Participants</p>
-                    <div id="survey-item-kabab-menu">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </li>
+                    // Print each survey as a list item
+                    if ($surveys->rowCount() > 0) {
+                        $surveys = $surveys->fetchAll();
 
-                <li class="survey-item">
-                    <p id="survey-item-title">Survey Title</p>
-                    <p id="survey-item-questions">0 Questions</p>
-                    <p id="survey-item-participants">0 Participants</p>
-                    <div id="survey-item-kabab-menu">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </li>
+                        foreach($surveys as $survey) {
+                            ?>
+                            <li class="survey-item">
+                                <p id="survey-item-title"><?php echo $survey["name"]; ?></p>
+                                <p id="survey-item-questions">0 Questions</p>
+                                <p id="survey-item-participants">0 Participants</p>
+                                <div id="survey-item-kabab-menu">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </li> 
+                            <?php
+                        }
+                    }
 
-                <li class="survey-item">
-                    <p id="survey-item-title">Survey Title</p>
-                    <p id="survey-item-questions">0 Questions</p>
-                    <p id="survey-item-participants">0 Participants</p>
-                    <div id="survey-item-kabab-menu">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </li>
+                ?>
+            
             </ul>
         </main>
             
