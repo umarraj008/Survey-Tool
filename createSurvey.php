@@ -8,6 +8,9 @@
         <!-- Header Section -->
         <?php include_once("./includes/header.php"); ?>
         
+        <!-- Script -->
+        <script src="./js/surveyEditor.js"></script>
+
         <!-- Main Content -->
         <main>
             <!-- Side Menu -->
@@ -15,9 +18,9 @@
                 <ul>
                     <h2>Questions <span>(Drag and drop)</span></h2>
                     <br>
-                    <li>Text Box</li>
-                    <li>Multiple Choice</li>
-                    <li>Yes/No Choice</li>
+                    <li onclick="addQuestion('TextBox')">Text Box</li>
+                    <li onclick="addQuestion('MultipleChoice')">Multiple Choice</li>
+                    <li onclick="addQuestion('YesNoChoice')">Yes/No Choice</li>
                     <li>Dropdown Selection</li>
                     <li>Date of Birth Entry</li>
                     <li>Rating Scale</li>
@@ -59,8 +62,11 @@
                         </div>
                     </div>
                     <hr>
+
+                    <!-- Questions Container -->
                     <ul id="questions-container">
-                        <li class="open-ended-question">
+
+                        <!-- <li class="open-ended-question">
                             <div id="top-container">
                                 <div id="question-number-container">
                                     <p>Q1</p>
@@ -94,85 +100,15 @@
                                     <input type="text" name="question1" form="survey" value="" placeholder="Enter your question here...">
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
 
-                        <li class="open-ended-question">
-                            <div id="top-container">
-                                <div id="question-number-container">
-                                    <p>Q2</p>
-                                </div>
-                                <div id="question-type-container">
-                                    <p>Text Box Question</p>
-                                </div>
-                                <div id="delete-question-container">
-                                    <a href="">Delete Question</a>
-                                </div>
-                            </div>
-                            <div id="bottom-container">
-                                <div id="left-container">
-                                    <div class="kabab-menu">
-                                        <div class="dot-container">
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                        <div class="dot-container">
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                        <div class="dot-container">
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="right-container">
-                                    <p>Question Text</p>
-                                    <input type="text" name="question2" form="survey" value="" placeholder="Enter your question here...">
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="open-ended-question">
-                            <div id="top-container">
-                                <div id="question-number-container">
-                                    <p>Q3</p>
-                                </div>
-                                <div id="question-type-container">
-                                    <p>Text Box Question</p>
-                                </div>
-                                <div id="delete-question-container">
-                                    <a href="">Delete Question</a>
-                                </div>
-                            </div>
-                            <div id="bottom-container">
-                                <div id="left-container">
-                                    <div class="kabab-menu">
-                                        <div class="dot-container">
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                        <div class="dot-container">
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                        <div class="dot-container">
-                                            <div></div>
-                                            <div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="right-container">
-                                    <p>Question Text</p>
-                                    <input type="text" name="question3" form="survey" value="" placeholder="Enter your question here...">
-                                </div>
-                            </div>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
         </main>
             
         <!-- Footer Section -->
-        <?php include_once("./includes/footer.php"); ?>
+        <!-- <?php //include_once("./includes/footer.php"); ?> -->
     </body>
 </html>
