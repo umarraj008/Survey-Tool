@@ -20,9 +20,12 @@ if (empty($surveyDescription)) {
     redirectWithError("Survey Description is Required!");
 }
 
+//generate survey code
+$code = generateCode();
+
 // Add survey to database
 $db->query(
-    "INSERT INTO surveys (name, description, status) VALUES ('$surveyTitle', '$surveyDescription', '1')"
+    "INSERT INTO surveys (name, code, description, status) VALUES ('$surveyTitle', '$code','$surveyDescription', '1')"
 );
 
 // Add to survey owner
@@ -66,4 +69,22 @@ function formatData($data) {
 function redirectWithError($err) {
     header("Location: ../createSurvey.php?error={$err}");
     exit();
+}
+
+//This function was from stack overflow:
+//https://stackoverflow.com/questions/4570980/generating-a-random-code-in-php
+function generateCode() {
+    $chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+    srand((double)microtime()*1000000);
+    $i = 0; 
+    $string = '' ; 
+
+    while ($i <= 7) { 
+        $num = rand() % 33; 
+        $tmp = substr($chars, $num, 1); 
+        $string = $string . $tmp; 
+        $i++; 
+    } 
+
+    return $string; 
 }
