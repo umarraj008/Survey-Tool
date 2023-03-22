@@ -76,7 +76,8 @@ function makeOpenTextBox(index) {
     let questionInput = document.createElement("input");
     questionInput.setAttribute("class", "questionInput");
     questionInput.setAttribute("type", "text");
-    questionInput.setAttribute("name", "question" + index);
+    // questionInput.setAttribute("name", "question" + index);
+    questionInput.setAttribute("name", "question[]");
     questionInput.setAttribute("form", "survey");
     questionInput.setAttribute("value", "");
     questionInput.setAttribute("placeholder", "Enter your question here...");
@@ -108,27 +109,33 @@ function makeOpenTextBox(index) {
 }
 
 function deleteQuestion(index) {
+    //delete question
     questionContainer.removeChild(document.getElementById("q" + index));
     
+    //reasign questions ids
     let liIds = document.getElementsByClassName("question");
     for (i = 0; i < liIds.length; i++) {
         liIds[i].setAttribute("id", "q" + (i+1));
     }
 
+    //reasign questions numbers
     let questions = document.getElementsByClassName("question-number-text");
     for (i = 0; i < questions.length; i++) {
         questions[i].innerHTML = "Q" + (i+1);
     }
 
+    //reasign questions delete index
     let deleteQuestion = document.getElementsByClassName("deleteQuestion");
     for (i = 0; i < deleteQuestion.length; i++) {
         deleteQuestion[i].setAttribute("onclick", "deleteQuestion(" + (i+1) + ")");
     }
 
+    //reasign questions input index
     let questionInput = document.getElementsByClassName("questionInput");
     for (i = 0; i < questionInput.length; i++) {
         questionInput[i].setAttribute("name", "question" + (i+1));
     }
 
+    //recount number of questions
     numberOfQuestions = liIds.length;
 }

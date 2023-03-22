@@ -28,11 +28,32 @@ $db->query(
 // Add to survey owner
 $surveyID = $db->lastInsertId();
 $userID = $_SESSION["user"]->user_ID;
-if ($db->query(
+$db->query(
     "INSERT INTO survey_owner (user_ID, survey_ID) VALUES ('$userID', '$surveyID')"
-)) {
-    header("Location: ../dashboard.php");
+);
+
+//get all questions
+$questions = $_POST["question"];
+$index = 1;
+foreach ($questions as $q) {
+    
+    // Add question to database
+    $db->query(
+        "INSERT INTO questions (type, text) VALUES ('TextBox', '$q')"
+    );
+    $lastInsertedQuestion = $db->lastInsertId();
+    
+    // Add to question order
+    $db->query(
+        "INSERT INTO question_order (survey_ID, question_ID, question_index) VALUES ($surveyID, $lastInsertedQuestion, $index)"
+    );
+
+    $index++;
 }
+
+// Redirect user after uploading all to database
+header("Location: ../dashboard.php");
+
 
 // function to format data correctly
 function formatData($data) {
