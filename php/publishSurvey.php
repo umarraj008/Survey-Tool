@@ -40,16 +40,48 @@ $questions = $_POST["question"];
 $index = 1;
 foreach ($questions as $q) {
     
-    // Add question to database
-    $db->query(
-        "INSERT INTO questions (type, text) VALUES ('TextBox', '$q')"
-    );
-    $lastInsertedQuestion = $db->lastInsertId();
-    
-    // Add to question order
-    $db->query(
-        "INSERT INTO question_order (survey_ID, question_ID, question_index) VALUES ($surveyID, $lastInsertedQuestion, $index)"
-    );
+    // Check if question options exists -> means that its not open text question
+    if (isset($_POST["question" . $index . "option"])) {
+        // Add question to database
+        $db->query(
+            "INSERT INTO questions (type, text) VALUES ('MultipleChoice', '$q')"
+        );
+        $lastInsertedQuestion = $db->lastInsertId();
+        
+        // Add to question order
+        $db->query(
+            "INSERT INTO question_order (survey_ID, question_ID, question_index) VALUES ($surveyID, $lastInsertedQuestion, $index)"
+        );
+
+        // Get all options
+        $options = $_POST["question" . $index . "option"];
+        $optionIndex = 1;
+        foreach($options as $o) {
+            $db->query(
+                "INSERT INTO options (type, text) VALUES ('MultipleChoice', '$o')"
+            );
+
+            $lastInsertedOption = $db->lastInsertId();
+        
+            // Add to option order
+            $db->query(
+                "INSERT INTO option_order (option_ID, question_ID, option_index) VALUES ($lastInsertedOption, $lastInsertedQuestion, $optionIndex)"
+            );
+
+            $optionIndex++;
+        }
+    } else {   
+        // Add question to database
+        $db->query(
+            "INSERT INTO questions (type, text) VALUES ('TextBox', '$q')"
+        );
+        $lastInsertedQuestion = $db->lastInsertId();
+        
+        // Add to question order
+        $db->query(
+            "INSERT INTO question_order (survey_ID, question_ID, question_index) VALUES ($surveyID, $lastInsertedQuestion, $index)"
+        );
+    }
 
     $index++;
 }
@@ -88,3 +120,5 @@ function generateCode() {
 
     return $string; 
 }
+
+//print_r($_POST);
