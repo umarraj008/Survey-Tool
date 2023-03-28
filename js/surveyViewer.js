@@ -37,3 +37,13 @@ function deleteScripts() {
     scripts = document.getElementsByClassName("deleteScript")
     console.log(scripts);
 }
+
+function startSurvey() {
+    document.getElementById("survey-start").style.opacity = 0;
+    document.getElementById("survey-start").style.transform = "translateX(-50px)";
+    setTimeout(() => {
+        document.getElementById("survey-start").style.visibility = "hidden";
+        document.getElementById("survey-start").style.transform = "translateX(50px)";
+        //document.getElementById("survey-start").parentNode.removeChild(document.getElementById("survey-start"));
+    }, 300);
+}
