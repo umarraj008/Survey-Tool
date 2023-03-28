@@ -1,0 +1,8 @@
+#invalid-message {
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    background-color: red;
+    display: grid;
+    align-items: center;
+}
