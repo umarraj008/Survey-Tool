@@ -41,10 +41,11 @@
                         $surveys = $surveys->fetchAll();
 
                         foreach($surveys as $survey) {
+                            $codeString = "'" . $survey['code'] . "'";
                             ?>
-                            <li class="survey-item" onclick="openSurveyResults(<?php echo($survey['survey_ID'])?>)">
-                                <p id="survey-item-title"><?php echo $survey["name"]; ?></p>
-                                <p id="survey-item-questions">0 Questions</p>
+                            <li class="survey-item" onclick="openSurveyResults(<?php echo($codeString); ?>)">
+                                <p id="survey-item-title"><?php echo($survey["name"]. " | Code: " . $survey["code"]); ?></p>
+                                <p id="survey-item-questions"><?php echo($survey["number_of_questions"] . " Questions"); ?></p>
                                 <p id="survey-item-participants">0 Participants</p>
                                 <div id="survey-item-kabab-menu">
                                     <div></div>
@@ -75,10 +76,11 @@
                         $surveys = $surveys->fetchAll();
 
                         foreach($surveys as $survey) {
+                            $codeString = "'" . $survey['code'] . "'";
                             ?>
-                            <li class="survey-item">
-                                <p id="survey-item-title"><?php echo $survey["name"]; ?></p>
-                                <p id="survey-item-questions">0 Questions</p>
+                            <li class="survey-item" onclick="openSurveyResults(<?php echo($codeString); ?>)">
+                                <p id="survey-item-title"><?php echo($survey["name"]. " | Code: " . $survey["code"]); ?></p>
+                                <p id="survey-item-questions"><?php echo($survey["number_of_questions"] . " Questions"); ?></p>
                                 <p id="survey-item-participants">0 Participants</p>
                                 <div id="survey-item-kabab-menu">
                                     <div></div>

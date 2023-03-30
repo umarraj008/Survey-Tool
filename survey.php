@@ -3,10 +3,6 @@
     <head>
         <?php include_once("./includes/headTags.php"); ?>
         <link rel="stylesheet" href="./css/survey.css">
-        <script src="./js/Survey.js"></script>
-        <script src="./js/Question.js"></script>
-        <script src="./js/Option.js"></script>
-        <script src="./js/surveyViewer.js"></script>
     </head>
     <body>
         <!-- Header Section -->
@@ -14,10 +10,6 @@
         
         <!-- Main Content -->
         <main>
-            <div id="progress-bar">
-                <div id="progress-bar-value"></div>
-            </div>
-
             <?php
                 // Array to store the survey questions
                 $surveyData = new StdClass();
@@ -45,13 +37,6 @@
 
                             // Add survey data to js
                             $surveyID = $survey->survey_ID;
-                            $data = "'{$survey->survey_ID}','{$survey->name}','{$survey->code}','{$survey->description}','{$survey->status}'";
-                            echo "<script class='deleteScript'>setSurvey({$data});</script>";
-                            $surveyData->id = $survey->survey_ID;
-                            $surveyData->name = $survey->name;
-                            $surveyData->description = $survey->description;
-                            $surveyData->code = $survey->code;
-                            $surveyData->status = $survey->status;
 
                             // Get all questions
                             $questions = $db->query(
@@ -79,11 +64,6 @@
                                     $options = $options->fetchAll();
 
                                     foreach ($options as $o) {
-                                        $optionID = $o["option_ID"];
-                                        $optionType = $o["type"];
-                                        $optionText = $o["text"];
-                                        $data = "'{$optionID}','{$optionType}','{$optionText}'";
-                                        echo "<script class='deleteScript'>setOption({$data});</script>";
 
                                         // Create option object
                                         $option = new StdClass();
@@ -99,8 +79,6 @@
                                     array_push($surveyQuestions, $question);
 
                                 } else {
-                                    $data = "'null','TextBox','null'";
-                                    echo "<script class='deleteScript'>setOption({$data});</script>";
 
                                     // Create question object
                                     $question = new StdClass();
@@ -112,21 +90,10 @@
                                     // Add question to array
                                     array_push($surveyQuestions, $question);
                                 }
-
-                                $questionID = $q["question_ID"];
-                                $questionType = $q["type"];
-                                $questionText = $q["text"];
-                                $data = "'{$questionID}','{$questionType}','{$questionText}'";
-                                echo "<script class='deleteScript'>setQuestion({$data});</script>";
-                                
-                                echo "<script class='deleteScript'>addQuestionToSurvey();</script>";
                             }
 
-                            //delete all scripts
-                            echo "<script class='deleteScript'>deleteScripts();</script>";
-
                             ?>
-                                <form id="survey" action="./php/publishSurveyResponse.php" method="POST">
+                                <form id="survey" action="./php/publishSurveyResponse.php?<?php echo("id=" . $survey->survey_ID . "&noq=" . $survey->number_of_questions . "&code=" . $survey->code); ?>" method="POST">
                                 <div id="survey-start">
                                     <h1><?php echo($survey->name); ?></h1>
                                     <h2><?php echo($survey->description); ?></h2>
@@ -135,8 +102,6 @@
                                     <p>Your data is anonymous and private.</p>
                                     <p>Please don't share personal information.</p>
                                     <br>
-                                    <br>
-                                    <a class="button" href="#" onclick="startSurvey()">Start Survey</a>
                                 </div>
 
                             <?php
@@ -164,22 +129,22 @@
                                             <div id="bottom-container">
 
                                                 <label class="option" for="question<?php echo($index . "option1"); ?>">
-                                                    <input type="radio" form="survey" id="question<?php echo($index . "option1"); ?>" name="question<?php echo($index); ?>" value="<?php echo($q->options[0]->text); ?>">
+                                                    <input type="radio" form="survey" id="question<?php echo($index . "option1"); ?>" name="MultipleChoice#question<?php echo($index); ?>" value="<?php echo($q->options[0]->text); ?>">
                                                     <?php echo($q->options[0]->text); ?>
                                                 </label>
                                                 
                                                 <label class="option" for="question<?php echo($index . "option2"); ?>">
-                                                    <input type="radio" form="survey" id="question<?php echo($index . "option2"); ?>" name="question<?php echo($index); ?>" value="<?php echo($q->options[1]->text); ?>">
+                                                    <input type="radio" form="survey" id="question<?php echo($index . "option2"); ?>" name="MultipleChoice#question<?php echo($index); ?>" value="<?php echo($q->options[1]->text); ?>">
                                                     <?php echo($q->options[1]->text); ?>
                                                 </label>
 
                                                 <label class="option" for="question<?php echo($index . "option3"); ?>">
-                                                    <input type="radio" form="survey" id="question<?php echo($index . "option3"); ?>" name="question<?php echo($index); ?>" value="<?php echo($q->options[2]->text); ?>">
+                                                    <input type="radio" form="survey" id="question<?php echo($index . "option3"); ?>" name="MultipleChoice#question<?php echo($index); ?>" value="<?php echo($q->options[2]->text); ?>">
                                                     <?php echo($q->options[2]->text); ?>
                                                 </label>
 
                                                 <label class="option" for="question<?php echo($index . "option4"); ?>">
-                                                    <input type="radio" form="survey" id="question<?php echo($index . "option4"); ?>" name="question<?php echo($index); ?>" value="<?php echo($q->options[3]->text); ?>">
+                                                    <input type="radio" form="survey" id="question<?php echo($index . "option4"); ?>" name="MultipleChoice#question<?php echo($index); ?>" value="<?php echo($q->options[3]->text); ?>">
                                                     <?php echo($q->options[3]->text); ?>
                                                 </label>
 
@@ -202,7 +167,7 @@
 
                                             </div>
                                             <div id="bottom-container">
-                                                <textarea id="text-box" type="text" form="survey" name="question<?php echo($index); ?>" placeholder="Answer goes here..."></textarea>
+                                                <textarea id="text-box" type="text" form="survey" name="TextBox#question<?php echo($index); ?>" placeholder="Answer goes here..."></textarea>
                                             </div>
                                         </div>
                                     <?php
@@ -210,6 +175,15 @@
 
                                 $index++;
                             }
+
+                            //publish survey button
+                            ?>
+                                <div id="send-response-container">
+                                    <input class="button" name="submit" value="Send Resonse" type="submit" form="survey" />
+                                </div>
+
+                            <?php
+
                         } else {
                             // If cannot find survey data show error
                             echo("<p id='invalid-message'>Survey is Closed.</p>");  

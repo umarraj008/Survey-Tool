@@ -8,15 +8,13 @@
 }
 
 #survey-start {
-    width: 100%;
+    width: 80%;
     background-color: orange;
-    text-align: center;
-    padding-top: 300px;
-    transition: 0.2s ease-in-out;
-    opacity: 1;
+    /* text-align: center; */
+    padding-top: 100px;
 }
 
-#progress-bar {
+/* #progress-bar {
     width: 100%;
     height: 30px;
 }
@@ -27,7 +25,7 @@
     float: left;
     transition: 0.2s ease-in-out;
     background-color: rgb(92, 194, 241);
-}
+} */
 
 .button {
     padding: 15px;
@@ -39,6 +37,8 @@
 .question-container {
     width: 80%;
     background-color: greenyellow;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .question-container #top-container {
@@ -97,4 +97,13 @@
     width:100%;
     resize: vertical;
     min-height: 50px;
+}
+
+#send-response-container {
+    width: 100%;
+    background-color: rgb(81, 110, 206);
+    height: 100px;
+    display: grid;
+    align-items: center;
+    padding-bottom: 100px;
 }

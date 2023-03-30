@@ -20,12 +20,16 @@ if (empty($surveyDescription)) {
     redirectWithError("Survey Description is Required!");
 }
 
+// Get number of questions
+$questions = $_POST["question"];
+$numberOfQuestions = count($questions);
+
 //generate survey code
 $code = generateCode();
 
 // Add survey to database
 $db->query(
-    "INSERT INTO surveys (name, code, description, status) VALUES ('$surveyTitle', '$code','$surveyDescription', '1')"
+    "INSERT INTO surveys (name, code, description, number_of_questions, status) VALUES ('$surveyTitle', '$code','$surveyDescription','$numberOfQuestions', '1')"
 );
 
 // Add to survey owner
@@ -35,8 +39,7 @@ $db->query(
     "INSERT INTO survey_owner (user_ID, survey_ID) VALUES ('$userID', '$surveyID')"
 );
 
-//get all questions
-$questions = $_POST["question"];
+// Add each question to database
 $index = 1;
 foreach ($questions as $q) {
     
