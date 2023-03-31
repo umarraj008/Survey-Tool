@@ -1,6 +1,4 @@
-//get all canvas
-//get data
-//apply chart data
+var textBoxQuestionList = [];
 
 function setChartData(pieCanvas, barCanvas, options, data) {
     pieCanvas = document.getElementById(pieCanvas);
@@ -44,4 +42,35 @@ function setChartData(pieCanvas, barCanvas, options, data) {
             }
         }
     });
+}
+
+function setTextBoxData(textBoxID, questionIndex, answerString) {
+    var textBoxQuestion = new TextBoxQuestion();
+    var answers = answerString.split("#@#");
+    
+    textBoxQuestion.setTextBoxID(textBoxID);
+    textBoxQuestion.setAnswers(answers);
+
+    textBoxQuestionList.push(textBoxQuestion);
+
+    setTextBoxAnswer(textBoxID, questionIndex-1, 0);
+}
+
+function setTextBoxAnswer(id, questionIndex, answerIndex) {
+    var textBoxAnswer = document.getElementById(id);
+    textBoxAnswer.innerHTML = textBoxQuestionList[questionIndex].getAnswer(answerIndex);
+    updateTotal(questionIndex);
+}
+
+function nextTextBoxAnswer(id, questionIndex) {
+    setTextBoxAnswer(id, questionIndex-1, textBoxQuestionList[questionIndex-1].nextAnswer());
+}
+
+function previousTextBoxAnswer(id, questionIndex) {
+    setTextBoxAnswer(id, questionIndex-1, textBoxQuestionList[questionIndex-1].previousAnswer());
+}
+
+function updateTotal(questionIndex) {
+    var textBoxTotal = document.getElementById("TextBoxTotal" + (questionIndex+1));
+    textBoxTotal.innerHTML = textBoxQuestionList[questionIndex].getTotal();
 }

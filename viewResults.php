@@ -4,6 +4,7 @@
         <?php include_once("./includes/headTags.php"); ?>
         <link rel="stylesheet" href="./css/viewResults.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="./js/TextBoxQuestion.js"></script>
         <script src="./js/surveyResults.js"></script>
     </head>
     <body>
@@ -58,7 +59,7 @@
 
                 // Get total response count
                 $totalParticipants = $db->query(
-                    "SELECT COUNT(survey_ID=$surveyID) AS count FROM survey_response "
+                    "SELECT survey_ID, count(*) as 'count' FROM survey_response WHERE survey_ID='$surveyID'"
                 );
 
                 $totalParticipants = $totalParticipants->fetchObject();
@@ -160,10 +161,36 @@
                                 <h2><?php echo($q->text); ?></h2>
                             </div>
                             <div id="text-box-answer-viewer-container" >
-                                <p>answer</p>
+                                <div id="text-box-answer-button-container">
+                                    <a onclick="previousTextBoxAnswer('TextBoxAnswer<?php echo($index); ?>','<?php echo($index); ?>')">Previous</a>
+                                    <p id="TextBoxTotal<?php echo($index)?>">0 / 0</p>
+                                    <a onclick="nextTextBoxAnswer('TextBoxAnswer<?php echo($index); ?>','<?php echo($index); ?>')">Next</a>
+                                </div>
+                                <div id="text-box-answer">
+                                    <p id="TextBoxAnswer<?php echo($index); ?>">answer</p>
+                                </div>
                             </div>
                         </div>
             <?php
+
+                        // Get all responses for this question
+                        $answers = $db->query(
+                            "SELECT a.* FROM answers AS a INNER JOIN answer_response AS ar ON a.answer_ID=ar.answer_ID AND ar.question_ID='$q->id'"
+                        );
+
+                        // Fetch all answers
+                        $answers = $answers->fetchAll();
+
+                        // Convert question answers to string
+                        $answerString = "'";
+                        foreach ($answers as $a) {
+                            $answerString = $answerString . $a["text"] . "#@#";
+                        }
+
+                        // Remove last comma
+                        $answerString = rtrim($answerString, "#@#") . "'";
+
+                        echo("<script>setTextBoxData('TextBoxAnswer" . $index . "', " . $index . ", " . $answerString . ");</script>");
 
                     } else if ($q->type == "MultipleChoice") {
             ?>
