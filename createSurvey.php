@@ -102,6 +102,53 @@
                             </div>
                         </li> -->
 
+
+                        <!-- <li class="multiple-choice-question">
+                            <div id="top-container">
+                                <div id="question-number-container">
+                                    <p>Q1</p>
+                                </div>
+                                <div id="question-type-container">
+                                    <p>Multiple Choice Question</p>
+                                </div>
+                                <div id="add-option-container">
+                                    <a href="">Add Option</a>
+                                </div>
+                                <div id="delete-question-container">
+                                    <a href="">Delete Question</a>
+                                </div>
+                            </div>
+                            <div id="bottom-container">
+                                <div id="left-container">
+                                    <div class="kabab-menu">
+                                        <div class="dot-container">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="dot-container">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                        <div class="dot-container">
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="right-container">
+                                    <p>Question Text</p>
+                                    <input type="text" name="question1" form="survey" value="" placeholder="Enter your question here...">
+                                    <div id="option-container">
+                                        <div class="option">
+                                            <p class="option-label">Option 1</p>
+                                            <input type="text" name="option1" form="survey" value="" placeholder="Answer goes here...">
+                                            <a href="#">Remove</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li> -->
+
                         
                     </ul>
                 </div>

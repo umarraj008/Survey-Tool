@@ -1,0 +1,109 @@
+#invalid-message {
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    background-color: red;
+    display: grid;
+    align-items: center;
+}
+
+#survey-start {
+    width: 80%;
+    background-color: orange;
+    /* text-align: center; */
+    padding-top: 100px;
+}
+
+/* #progress-bar {
+    width: 100%;
+    height: 30px;
+}
+
+#progress-bar-value {
+    width: 0%;
+    height: 30px;
+    float: left;
+    transition: 0.2s ease-in-out;
+    background-color: rgb(92, 194, 241);
+} */
+
+.button {
+    padding: 15px;
+    background-color: lime;
+    user-select: none;
+    text-decoration: none;
+}
+
+.question-container {
+    width: 80%;
+    background-color: greenyellow;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.question-container #top-container {
+    background-color: rgb(207, 156, 79);   
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.question-container #left-container {
+    background-color: rgb(154, 40, 177);
+    width: 100%;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.question-container #right-container {
+    background-color: rgb(224, 106, 106);
+    width: 50px;
+    margin: 10px;
+}
+
+.question-container #bottom-container {
+    background-color: rgb(111, 155, 250);
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.question-container #bottom-container .option {
+    padding: 15px;
+    background-color: deepskyblue;
+    display: flex;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.question-container #bottom-container .option:hover {
+    cursor: pointer;
+}
+
+.question-container #bottom-container .option:first-child {
+    margin-left: 0px;
+}
+
+.question-container #bottom-container .option:last-child {
+    margin-right: 0px;
+}
+
+.question-container #bottom-container .option input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.question-container #bottom-container #text-box {
+    width:100%;
+    resize: vertical;
+    min-height: 50px;
+}
+
+#send-response-container {
+    width: 100%;
+    background-color: rgb(81, 110, 206);
+    height: 100px;
+    display: grid;
+    align-items: center;
+    padding-bottom: 100px;
+}
