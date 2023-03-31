@@ -4,6 +4,7 @@
         <?php include_once("./includes/headTags.php"); ?>
         <link rel="stylesheet" href="./css/viewResults.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="./js/surveyResults.js"></script>
     </head>
     <body>
         <!-- Header Section -->
@@ -54,6 +55,73 @@
                     header("Location: ./dashboard.php?you do not own the survey");
                     exit();
                 }
+
+                // Get total response count
+                $totalParticipants = $db->query(
+                    "SELECT COUNT(survey_ID=$surveyID) AS count FROM survey_response "
+                );
+
+                $totalParticipants = $totalParticipants->fetchObject();
+                $totalParticipants = $totalParticipants->count;
+
+                // Create list to store survey questions
+                $surveyQuestions = array();
+
+                // Get all questions
+                $questions = $db->query(
+                    "SELECT q.* FROM questions AS q INNER JOIN question_order AS qo ON q.question_ID=qo.question_ID AND qo.survey_ID='$surveyID'"
+                );
+
+                $questions = $questions->fetchAll();
+
+                // Get all options
+                foreach ($questions as $q) {
+                    if ($q["type"] == "MultipleChoice") {
+                        $questionID = $q["question_ID"];
+                        
+                        // Create question object
+                        $question = new StdClass();
+                        $question->id = $q["question_ID"];
+                        $question->type = $q["type"];
+                        $question->text = $q["text"];
+                        $question->options = array();
+                        
+                        // Get all options
+                        $options = $db->query(
+                            "SELECT o.* FROM options AS o INNER JOIN option_order AS oo ON o.option_ID=oo.option_ID AND oo.question_ID='$questionID'"
+                        );
+
+                        $options = $options->fetchAll();
+
+                        // Create option object
+                        foreach ($options as $o) {
+
+                            // Create option object
+                            $option = new StdClass();
+                            $option->id = $o["option_ID"];
+                            $option->type = $o["type"];
+                            $option->text = $o["text"];
+
+                            // Add option object to question
+                            array_push($question->options, $option);
+                        }
+
+                        // Add question to array
+                        array_push($surveyQuestions, $question);
+
+                    } else {
+
+                        // Create question object
+                        $question = new StdClass();
+                        $question->id = $q["question_ID"];
+                        $question->type = $q["type"];
+                        $question->text = $q["text"];
+                        $question->options = array();
+
+                        // Add question to array
+                        array_push($surveyQuestions, $question);
+                    }
+                }
             ?>
 
             <h1 id="page-title">Results</h1>
@@ -63,6 +131,7 @@
                 <div id="title-and-description-container">
                     <h2><?php echo($survey->name); ?></h2>
                     <h3><?php echo($survey->description); ?></h3>
+                    <h3><?php echo("Total Participants: " . $totalParticipants); ?></h3>
                 </div>
                 <div id="survey-button-group-container">
                     <div id="top-container">
@@ -79,10 +148,92 @@
             <hr>
 
             <!-- List of questions results -->
-            <div class="question-result-container">
-                <div class="question-result">
-                
-                </div>
+            <div id="question-result-container">
+            <?php
+                $index = 1;
+                foreach ($surveyQuestions as $q) {
+                    if ($q->type == "TextBox") {
+            ?>
+                        <div class="question-result">
+                            <div id="question-text" class="inner-question-container">
+                                <p><?php echo("Question " . $index); ?></p>
+                                <h2><?php echo($q->text); ?></h2>
+                            </div>
+                            <div id="text-box-answer-viewer-container" >
+                                <p>answer</p>
+                            </div>
+                        </div>
+            <?php
+
+                    } else if ($q->type == "MultipleChoice") {
+            ?>
+                        <div class="question-result">
+                            <div id="question-text" class="inner-question-container">
+                                <p><?php echo("Question " . $index); ?></p>
+                                <h2><?php echo($q->text); ?></h2>
+                            </div>
+                            <div id="pie-chart" class="chart-container">
+                                <canvas id="<?php echo("pieChartQuestion" . $index); ?>"></canvas>
+                            </div>
+                            <div id="bar-chart" class="chart-container">
+                                <canvas id="<?php echo("barChartQuestion" . $index); ?>"></canvas>
+                            </div>
+                        </div>
+
+            <?php
+                        // Convert options to string
+                        $labels = "'";
+                        $options = $q->options;
+                        foreach($options as $o) {
+                            $labels = $labels . $o->text . ",";
+                        }
+                        
+                        // Remove last comma
+                        $labels = rtrim($labels, ",") . "'";
+
+                        // Get all responses for this question
+                        $answers = $db->query(
+                            "SELECT a.* FROM answers AS a INNER JOIN answer_response AS ar ON a.answer_ID=ar.answer_ID AND ar.question_ID='$q->id'"
+                        );
+
+                        // Fetch all answers
+                        $answers = $answers->fetchAll();
+
+                        // Create array to store count for each option
+                        $count = array(0, 0, 0, 0);
+
+                        foreach($answers as $a) {
+                            if ($a["option_ID"] == $options[0]->id) {
+                                $count[0]++;
+
+                            } else if ($a["option_ID"] == $options[1]->id) {
+                                $count[1]++;
+
+                            } else if ($a["option_ID"] == $options[2]->id) {
+                                $count[2]++;
+
+                            } else if ($a["option_ID"] == $options[3]->id) {
+                                $count[3]++;
+
+                            }
+                        }
+                        
+                        // Convert count to string
+                        $data = "'";
+                        foreach($count as $c) {
+                            $data = $data . $c . ",";
+                        }
+
+                        // Remove last comma
+                        $data = rtrim($data, ",") . "'";
+                        
+                        echo("<script>setChartData('pieChartQuestion" . $index . "', 'barChartQuestion" . $index . "', ". $labels . ", " . $data .");</script>");
+                    }
+                    $index++;
+                }
+
+                //echo("<script>addData(" . $data . ");</script>");
+            ?>
             </div>
         </main>
             

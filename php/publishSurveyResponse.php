@@ -26,7 +26,16 @@ foreach($_POST as $key=>$value) {
         $q = new StdClass();
         $qType = explode("#", $key);
         $q->type = $qType[0];
-        $q->text = $value;
+        $q->questionID = $qType[1];
+        
+        if ($q->type == "MultipleChoice") {
+            $q->optionID = $value;
+            $q->text = "";
+        } else if ($q->type == "TextBox") {
+            $q->optionID = "0";
+            $q->text = $value;
+        }
+
         array_push($questions, $q);
     }
 }
@@ -49,15 +58,18 @@ $db->query(
 // Add each answer to database
 foreach ($questions as $q) {
     $db->query(
-        "INSERT INTO answers (type, text) VALUES ('{$q->type}','{$q->text}')"
+        "INSERT INTO answers (type, text, option_ID) VALUES ('{$q->type}','{$q->text}','{$q->optionID}')"
     );
 
     // Get last answer id
     $answerID = $db->lastInsertId();
 
+    // Get question id for the answered question
+    $questionID = $q->questionID;
+
     // Link each question to response table
     $db->query(
-        "INSERT INTO answer_response (response_ID, answer_ID) VALUES ('{$responseID}','{$answerID}')"
+        "INSERT INTO answer_response (response_ID, answer_ID, question_ID) VALUES ('{$responseID}','{$answerID}','{$questionID}')"
     );
 }
 

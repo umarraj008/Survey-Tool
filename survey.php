@@ -57,12 +57,14 @@
                                     $question->text = $q["text"];
                                     $question->options = array();
                                     
+                                    // Get all options
                                     $options = $db->query(
                                         "SELECT o.* FROM options AS o INNER JOIN option_order AS oo ON o.option_ID=oo.option_ID AND oo.question_ID='$questionID'"
                                     );
 
                                     $options = $options->fetchAll();
 
+                                    // Create option object
                                     foreach ($options as $o) {
 
                                         // Create option object
@@ -129,22 +131,22 @@
                                             <div id="bottom-container">
 
                                                 <label class="option" for="question<?php echo($index . "option1"); ?>">
-                                                    <input type="radio" form="survey" id="question<?php echo($index . "option1"); ?>" name="MultipleChoice#question<?php echo($index); ?>" value="<?php echo($q->options[0]->text); ?>">
+                                                    <input type="radio" form="survey" id="question<?php echo($index . "option1"); ?>" name="MultipleChoice#<?php echo($q->id); ?>#question<?php echo($index); ?>" value="<?php echo($q->options[0]->id); ?>">
                                                     <?php echo($q->options[0]->text); ?>
                                                 </label>
                                                 
                                                 <label class="option" for="question<?php echo($index . "option2"); ?>">
-                                                    <input type="radio" form="survey" id="question<?php echo($index . "option2"); ?>" name="MultipleChoice#question<?php echo($index); ?>" value="<?php echo($q->options[1]->text); ?>">
+                                                    <input type="radio" form="survey" id="question<?php echo($index . "option2"); ?>" name="MultipleChoice#<?php echo($q->id); ?>#question<?php echo($index); ?>" value="<?php echo($q->options[1]->id); ?>">
                                                     <?php echo($q->options[1]->text); ?>
                                                 </label>
 
                                                 <label class="option" for="question<?php echo($index . "option3"); ?>">
-                                                    <input type="radio" form="survey" id="question<?php echo($index . "option3"); ?>" name="MultipleChoice#question<?php echo($index); ?>" value="<?php echo($q->options[2]->text); ?>">
+                                                    <input type="radio" form="survey" id="question<?php echo($index . "option3"); ?>" name="MultipleChoice#<?php echo($q->id); ?>#question<?php echo($index); ?>" value="<?php echo($q->options[2]->id); ?>">
                                                     <?php echo($q->options[2]->text); ?>
                                                 </label>
 
                                                 <label class="option" for="question<?php echo($index . "option4"); ?>">
-                                                    <input type="radio" form="survey" id="question<?php echo($index . "option4"); ?>" name="MultipleChoice#question<?php echo($index); ?>" value="<?php echo($q->options[3]->text); ?>">
+                                                    <input type="radio" form="survey" id="question<?php echo($index . "option4"); ?>" name="MultipleChoice#<?php echo($q->id); ?>#question<?php echo($index); ?>" value="<?php echo($q->options[3]->id); ?>">
                                                     <?php echo($q->options[3]->text); ?>
                                                 </label>
 
@@ -167,7 +169,7 @@
 
                                             </div>
                                             <div id="bottom-container">
-                                                <textarea id="text-box" type="text" form="survey" name="TextBox#question<?php echo($index); ?>" placeholder="Answer goes here..."></textarea>
+                                                <textarea id="text-box" type="text" form="survey" name="TextBox#<?php echo($q->id); ?>#question<?php echo($index); ?>" placeholder="Answer goes here..."></textarea>
                                             </div>
                                         </div>
                                     <?php
