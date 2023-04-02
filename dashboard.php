@@ -3,15 +3,12 @@
     <head>
         <?php include_once("./includes/headTags.php"); ?>
         <link rel="stylesheet" href="./css/dashboard.css">
+        <script src="./js/dashboard.js"></script>
     </head>
     <body>
         <!-- Header Section -->
         <?php include_once("./includes/header.php"); ?>
-        
-        <!-- Scripts -->
-        <script>
-            function openSurveyResults(id) { location.href = "viewResults.php?sid=" + id; }
-        </script>
+
         <!-- Main Content -->
         <main>
             <h1>Dashboard</h1>
@@ -54,14 +51,14 @@
 
                             $codeString = "'" . $survey['code'] . "'";
                             ?>
-                            <li class="survey-item" onclick="openSurveyResults(<?php echo($codeString); ?>)">
-                                <p id="survey-item-title"><?php echo($survey["name"]. " | Code: " . $survey["code"]); ?></p>
-                                <p id="survey-item-questions"><?php echo($survey["number_of_questions"] . " Questions"); ?></p>
-                                <p id="survey-item-participants"><?php echo($totalParticipants . " Participants"); ?></p>
-                                <div id="survey-item-kabab-menu">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
+                            <li class="survey-item">
+                                <div id="left-container" onclick="openSurveyResults(<?php echo($codeString); ?>)">
+                                    <p id="survey-item-title"><?php echo($survey["name"]. " | Code: " . $survey["code"]); ?></p>
+                                    <p id="survey-item-questions"><?php echo($survey["number_of_questions"] . " Questions"); ?></p>
+                                    <p id="survey-item-participants"><?php echo($totalParticipants . " Participants"); ?></p>
+                                </div>
+                                <div id="right-container" onclick="copyLink(<?php echo($codeString); ?>)">
+                                    <a id="survey-item-copy-link-button">Copy Survey Link</a>
                                 </div>
                             </li> 
                             <?php
@@ -89,14 +86,14 @@
                         foreach($surveys as $survey) {
                             $codeString = "'" . $survey['code'] . "'";
                             ?>
-                            <li class="survey-item" onclick="openSurveyResults(<?php echo($codeString); ?>)">
-                                <p id="survey-item-title"><?php echo($survey["name"]. " | Code: " . $survey["code"]); ?></p>
-                                <p id="survey-item-questions"><?php echo($survey["number_of_questions"] . " Questions"); ?></p>
-                                <p id="survey-item-participants">0 Participants</p>
-                                <div id="survey-item-kabab-menu">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
+                            <li class="survey-item">
+                                <div id="left-container" onclick="openSurveyResults(<?php echo($codeString); ?>)">
+                                    <p id="survey-item-title"><?php echo($survey["name"]. " | Code: " . $survey["code"]); ?></p>
+                                    <p id="survey-item-questions"><?php echo($survey["number_of_questions"] . " Questions"); ?></p>
+                                    <p id="survey-item-participants"><?php echo($totalParticipants . " Participants"); ?></p>
+                                </div>
+                                <div id="right-container" onclick="copyLink(<?php echo($codeString); ?>)">
+                                    <a id="survey-item-copy-link-button">Copy Survey Link</a>
                                 </div>
                             </li> 
                             <?php
