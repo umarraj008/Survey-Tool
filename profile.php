@@ -8,6 +8,12 @@
         <!-- Header Section -->
         <?php include_once("./includes/header.php"); ?>
         
+        <?php
+            if (!isset($_SESSION["user"])) {
+                header("Location: ./signup.php");
+            }
+        ?>
+
         <!-- Main Content -->
         <main>
             <h1>My Account</h1>

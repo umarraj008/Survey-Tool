@@ -5,10 +5,70 @@ include_once 'dbConnection.php';
 // Check if data exists and is not empty, else give error
 $firstName = checkData('first_name', 'First Name Is Required!');
 $lastName = checkData('last_name', 'Last Name Is Required!');
-$dateOfBirth = checkData('date_of_birth', 'Date Of Birth Is Required!');
+$day = checkData('day', 'Date Of Birth Is Required!');
+$month = checkData('month', 'Date Of Birth Is Required!');
+$year = checkData('year', 'Date Of Birth Is Required!');
 $email = checkData('email', 'Email Is Required!');
 $password = checkData('password', 'Password Is Required!');
 $passwordConfirm = checkData('confirm_password', 'Confirm Password Is Required!');
+$agreeTOS = checkData("agreeTOS", "Please Agree To The Terms!");
+
+// Check the TOS is confirmed
+if ($agreeTOS != "true") {
+    header("Location: ../signup.php?error=Please Agree To The Terms!");
+}
+
+// Check the date of birth is not text
+if ($day == "Default" || $month == "Default" || $year == "Default") {
+    header("Location: ../signup.php?error=Date Of Birth Is Required!");
+} else {
+    switch($month) {
+        case "January":
+            $month = "1";
+            break;
+
+        case "February":
+            $month = "2";
+            break;
+        case "March":
+            $month = "3";
+            break;
+            
+        case "April":
+            $month = "4";
+            break;
+
+        case "May":
+            $month = "5";
+            break;
+            
+        case "June":
+            $month = "6";
+            break;
+        case "July":
+            $month = "7";
+            break;
+            
+        case "August":
+            $month = "8";
+            break;
+        case "September":
+            $month = "9";
+            break;
+            
+        case "October":
+            $month = "10";
+            break;
+        case "November":
+            $month = "11";
+            break;
+            
+        case "December":
+            $month = "12";
+            break;
+    }
+    $dateOfBirth = $year . "-" . $month . "-" . $day;
+}
 
 // Check email contains @, else give error
 if (!str_contains($email, "@")) {
@@ -62,7 +122,7 @@ if ($user->rowCount() == 1) {
     // sign the user in.
     session_start();
     $_SESSION['user'] = $user->fetchObject();
-    header("Location: ../dashboard.php?message=Welcome {$_SESSION['user']->firstName}");
+    header("Location: ../dashboard.php?notif=Welcome {$_SESSION['user']->first_name}");
     exit();
 } else {
     // If the account was not created then there was an error

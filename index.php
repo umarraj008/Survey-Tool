@@ -22,7 +22,7 @@
                         <?php
                             } else {
                         ?>
-                                <a href="./register.php">Get Started - It's Free!</a>
+                                <a href="./signup.php">Get Started - It's Free!</a>
                         <?php        
                             }
                         ?>

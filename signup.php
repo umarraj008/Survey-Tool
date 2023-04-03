@@ -8,6 +8,12 @@
         <!-- Header Section -->
         <?php include_once("./includes/header.php"); ?>
         
+        <?php
+            if (isset($_SESSION["user"])) {
+                header("Location: ./dashboard.php");
+            }
+        ?>
+
         <!-- Main Content -->
         <main>
             <form action="./php/register.php" method="POST">
@@ -85,7 +91,7 @@
                 <br>
                 <br>
 
-                <input type="checkbox" name="agreeTOS" value="I agree to the Terms & Conditions and Privacy Policy*" alt="I agree to the Terms & Conditions and Privacy Policy*">
+                <input type="checkbox" name="agreeTOS" value="true" alt="I agree to the Terms & Conditions and Privacy Policy*">
                 <label for="agreeTOS">I agree to the <b><a href="#">Terms & Conditions</a></b> and <b><a href="#">Privacy Policy</a></b>*</label>
                 <br>
                 <br>

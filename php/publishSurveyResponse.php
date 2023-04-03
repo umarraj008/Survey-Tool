@@ -5,6 +5,11 @@ session_start();
 // Import database connection
 include_once 'dbConnection.php';
 
+// Check if user is logged in
+if (!isset($_SESSION["user"])) {
+    header("Location: ../signup.php");
+}
+
 // Check if survey id is set
 if (!isset($_GET["id"]) && !isset($_GET["noq"])) {
     header("Location: ../survey.php?error=Survey ID and number of questions not set");
