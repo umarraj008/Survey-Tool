@@ -142,12 +142,22 @@
                 </div>
                 <div id="survey-button-group-container">
                     <div id="top-container">
-                        <a href="#" onclick="">Edit Survey</a>
-                        <a href="#" onclick="">Close Survey</a>
+                        <a>Edit Survey</a>
+                        <?php
+                            if ($survey->status == "0") {
+                        ?>
+                            <a onclick="location.href='./php/updateSurvey.php?userID=<?php echo($userID); ?>&surveyID=<?php echo($surveyID); ?>&status=open'">Activate Survey</a>
+                        <?php
+                            } else if ($survey->status == "1") {
+                        ?>        
+                            <a onclick="location.href='./php/updateSurvey.php?userID=<?php echo($userID); ?>&surveyID=<?php echo($surveyID); ?>&status=close'">Close Survey</a>
+                        <?php
+                            }
+                        ?>
                     </div>
                     <div id="bottom-container">
-                        <a href="#" onclick="">Download Data</a>
-                        <a href="#" onclick="">Delete Survey</a>
+                        <a>Download Data</a>
+                        <a onclick="location.href='./php/deleteSurvey.php?userID=<?php echo($userID); ?>&surveyID=<?php echo($surveyID); ?>'">Delete Survey</a>
                     </div>
                 </div>
             </div>
