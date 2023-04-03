@@ -8,6 +8,12 @@
         <!-- Header Section -->
         <?php include_once("./includes/header.php"); ?>
         
+        <?php
+            if (isset($_SESSION["user"])) {
+                header("Location: ./dashboard.php");
+            }
+        ?>
+
         <!-- Main Content -->
         <main>
             <form action="./php/loginAuth.php" method="POST">

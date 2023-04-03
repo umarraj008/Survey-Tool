@@ -29,4 +29,15 @@
             
         </nav>
     </div>
+    <?php
+        if (isset($_GET["notif"])) {
+            $message = $_GET["notif"];
+            echo("<script>notification('$message')</script>");
+        }
+
+        if (isset($_GET["error"])) {
+            $message = $_GET["error"];
+            echo("<script>notification('$message')</script>");
+        }
+    ?>
 </header>

@@ -1,0 +1,13 @@
+#notification-container {
+    width: 100%;
+    position: fixed;
+    transition: 0.5s ease-in-out;
+}
+
+#notification-container #inner-container {
+    background-color: aquamarine;
+    width: 500px;
+    text-align: center;
+    padding:15px;
+    margin-top: 30px;
+}

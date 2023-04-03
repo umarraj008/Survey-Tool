@@ -68,18 +68,18 @@
 }
 
 #survey-code-container form {
-    width: 50%;
+    width: 40%;
     background-color: cornflowerblue;
 }
 
 #survey-code-container form h3 {
-    margin-left: 10px;
-    padding-top: 10px;
+    margin-left: 20px;
+    padding-top: 20px;
     font-size: 25px;
 }
 
 #survey-code-container form p {
-    margin-left: 10px;
+    margin-left: 20px;
     margin-bottom: 10px;
     font-size: 20px;
 }
@@ -87,10 +87,10 @@
 #survey-code-container form #input-container {
     background-color: darkslateblue;
     display: flex;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     height: 30px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 #survey-code-container form #input-container input {

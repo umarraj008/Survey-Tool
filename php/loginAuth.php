@@ -23,7 +23,7 @@ if (empty($email) && empty($password)) {
 }
 
 // Check if contains @.
-if (!str_contains($email, "@")) { // Email contains @aston.ac.uk
+if (!str_contains($email, "@")) {
     header("Location: ../login.php?error=Incorrect Email Format.");
     exit();
 }
@@ -47,7 +47,7 @@ if ($result->rowCount() == 1) {
     // Set session to this user account. and then returned to home page.
     session_start();
     $_SESSION['user'] = $result;
-    header("Location: ../dashboard.php?notif=Welcome Back {$_SESSION['user']->firstName}");
+    header("Location: ../dashboard.php?notif=Welcome Back " . $_SESSION['user']->first_name);
     exit();
 } else {
     // If no rows are return then incorrect email or user doesnt exists.

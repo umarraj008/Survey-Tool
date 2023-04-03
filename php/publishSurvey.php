@@ -5,6 +5,11 @@ session_start();
 // Import database connection
 include_once 'dbConnection.php';
 
+// Check if user is logged in
+if (!isset($_SESSION["user"])) {
+    header("Location: ../signup.php");
+}
+
 // check if survey title and description exist
 if (isset($_POST["survey_title"]) && isset($_POST["survey_description"])) {
     $surveyTitle = formatData($_POST["survey_title"]);
@@ -90,7 +95,7 @@ foreach ($questions as $q) {
 }
 
 // Redirect user after uploading all to database
-header("Location: ../dashboard.php");
+header("Location: ../dashboard.php?notif=Survey Published!");
 
 
 // function to format data correctly

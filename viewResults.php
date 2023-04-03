@@ -11,6 +11,12 @@
         <!-- Header Section -->
         <?php include_once("./includes/header.php"); ?>
         
+        <?php
+            if (!isset($_SESSION["user"])) {
+                header("Location: ./signup.php");
+            }
+        ?>
+
         <!-- Scripts -->
         <script>
             function openSurveyResults(id) { location.href = "viewResults.php?sid=" + id; }
