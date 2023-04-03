@@ -15,8 +15,18 @@
                     <h1>The simplest and fastest way to make surveys</h1>
                     <h2>Create professional looking surveys with our free to use tool, with real-time data analysis, and many more features to make your experience as quick and easy as possible.</h2>
                     <div id="button-container">
-                        <a href="#">Get Started - It's Free!</a>
-                        <a href="#">More Information About Us</a>
+                        <?php 
+                            if (isset($_SESSION["user"])) {
+                        ?>
+                                <a href="./dashboard.php">Get Started - It's Free!</a>
+                        <?php
+                            } else {
+                        ?>
+                                <a href="./register.php">Get Started - It's Free!</a>
+                        <?php        
+                            }
+                        ?>
+                        <a href="./about.php">More Information About Us</a>
                     </div>
                 </div>
                 <div id="right-container">
