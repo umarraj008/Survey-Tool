@@ -3,20 +3,22 @@ footer {
     display: block;
     height: 300px;
     float: left;
-    background-color: red;
+    /* background-color: red; */
+    box-shadow: 0px -5px 5px rgba(0,0,0,0.2);
+    background-color: rgb(50, 50, 50);
 }
 
 footer #outer-container {
     margin-top: 50px;
     width: 75%;
     height: 40%;
-    background-color: lime;
+    /* background-color: lime; */
     display: flex;
 }
 
 footer #image-container {
     width: 5%;
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 footer .container-title {
@@ -25,13 +27,18 @@ footer .container-title {
 }
 
 footer .inner-container {
-    background-color: orange;
+    /* background-color: orange; */
     width: 15%;
     float: left;
 }
 
+footer .inner-container h3 {
+    color: white;
+}
+
 footer .inner-container a {
     text-decoration: none;
+    color: white;
 }
 
 footer .inner-container a:hover {
@@ -40,7 +47,11 @@ footer .inner-container a:hover {
 
 footer #copyright-container {
     width: 75%;
-    background-color: darkgreen;
+    /* background-color: darkgreen; */
     text-align: right;
     margin-top: 10px;
+}
+
+footer #copyright-container p {
+    color: white;
 }

@@ -3,7 +3,7 @@
 <br clear="all">
     <div id="outer-container">
         <div id="image-container">
-            <img src="./resources/images/placeholder.png" width="100%" />
+            <img src="./resources/images/logo.png" width="100%" />
         </div>
 
         <div class="inner-container">

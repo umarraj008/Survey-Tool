@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="./css/notification.css">
 <link rel="stylesheet" href="./css/header.css">
 <link rel="stylesheet" href="./css/footer.css">
-<link rel="icon" href="#" type="image/gif" sizes="16x16">
+<link rel="icon" href="./resources/images/logo.ico" type="image/gif" sizes="16x16">
 <title>Cool Surveys</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -13,7 +13,8 @@ main {
 #side-menu {
     width: 15%;
     height: 100%;
-    background-color: aqua;
+    background-color: white;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
     position: absolute;
     overflow-y: auto;
 }
@@ -33,7 +34,8 @@ main {
 
 #side-menu li {
     text-align: center;
-    background-color: orange;
+    border: 2px solid rgb(50, 50, 50);
+    border-radius: 5px;
     padding: 20px;
     margin-bottom: 10px;
 }
@@ -46,7 +48,7 @@ main {
 #editor-outer-container {
     width: 85%;
     height: calc(100vh - 70px);
-    background-color: darkgreen;
+    /* background-color: darkgreen; */
     position: absolute;
     margin-left: 15%;
     overflow-y: auto;
@@ -58,14 +60,14 @@ main {
     /* width: 75vi; */
     margin-left: 25px;
     margin-right: 25px;
-    background-color: dodgerblue;
+    /* background-color: dodgerblue; */
 }
 
 #publish-survey-button-container {
     width: 100%;
     height: 50px;
     padding-top: 50px;
-    background-color: rgb(197, 127, 255);
+    /* background-color: rgb(197, 127, 255); */
 }
 
 #publish-survey-button-container h1 {
@@ -76,17 +78,30 @@ main {
     float: right;
     height: 100%;
     width: max-content;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 15px;
+    width: 150px;
     display: block;
     align-items: center;
-    background-color: chartreuse;
+    background-color: #0057ff;
+    border-radius: 5px;
+    border: 2px solid #0057ff;
+    transition: 0.2s ease-in-out;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#publish-survey-button-container input:hover {
+    color: black;
+    border: 2px solid rgb(50, 50, 50);
+    background-color: transparent;
 }
 
 #survey-title-and-description-container {
     width: 100%;
     display: flex;
-    background-color: rgb(84, 84, 207);
+    margin-top: 30px;
+    /* background-color: rgb(84, 84, 207); */
 }
 
 #survey-title-and-description-container div {
@@ -102,6 +117,7 @@ main {
     resize: none;
     min-height: 100px;
     font-size: 14px;
+    margin-top: 10px;
 }
 
 hr {
@@ -111,6 +127,7 @@ hr {
 
 #questions-container {
     padding: 0;
+    
 }
 
 #questions-container li:first-child {
@@ -124,31 +141,42 @@ hr {
     height: fit-content;
     margin-top: 15px;
     margin-bottom: 15px;
-    background-color: lime;
+    /* background-color: lime; */
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
 }
 
 .open-ended-question #top-container {
     width: 100%;
     height: 50px;
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
     display: flex;
+    /* background-color: #ff9900; */
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+    /* border-radius: 5px 5px 5px 0px; */
 }
 
 .open-ended-question #top-container #question-number-container {
     width: 50px;
     height: 100%;
-    background-color: aqua;
+    /* background-color: aqua; */
     text-align: center;
     display: grid;
     align-items: center;
+    background-color: #c77700;
+    border-radius: 5px 0px 0px 0px;
+    /* border-bottom: 2px solid rgb(200, 200, 200); */
+    /* border-right: 2px solid rgb(200, 200, 200); */
 }
 
 .open-ended-question #top-container #question-type-container {
     height: 100%;
     width: calc(100% - 50px - 150px);
-    background-color: cadetblue;
     display: flex;
     align-items: center;
+    background-color: #ff9900;
+    /* border-bottom: 2px solid rgb(200, 200, 200); */
 }
 
 .open-ended-question #top-container #question-type-container p {
@@ -160,30 +188,49 @@ hr {
 .open-ended-question #top-container #delete-question-container {
     width: 150px;
     height: 100%;
-    background-color: cornflowerblue;
+    background-color: white;
+    /* border-left: 2px solid rgb(200, 200, 200); */
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
+    border-radius: 0px 5px 0px 0px;
+}
+
+.open-ended-question #top-container #delete-question-container:hover {
+    background-color: #0057ff;
+    /* border: 2px solid #0057ff; */
+}
+
+.open-ended-question #top-container #delete-question-container:hover a {
+    color: white;
 }
 
 .open-ended-question #top-container #delete-question-container a {
     text-decoration: none;
     user-select: none;
+    transition: 0.2s ease-in-out;
+    color: black;
 }
+
 .open-ended-question #bottom-container {
     width: 100%;
     height: calc(100% - 50px);
-    background-color: darkorchid;
+    /* background-color: darkorchid; */
     display: flex;
 }
 
 .open-ended-question #bottom-container #left-container {
     width: 50.47px;
     /* width: 50px; */
-    background-color: fuchsia;
+    /* background-color: fuchsia; */
     display: grid;
     align-items: center;
     cursor: grab;
+    background-color: rgb(200, 200, 200);
+    border-radius: 0px 0px 0px 5px;
+    /* border-right: 2px solid #8f8f8f */
 }
 
 .kabab-menu{
@@ -191,7 +238,7 @@ hr {
     height: 30px;
     display: grid;
     align-items: center;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 
 .kabab-menu .dot-container div {
@@ -206,8 +253,12 @@ hr {
 .open-ended-question #bottom-container #right-container {
     height: calc(100% - 20px);
     width: calc(100% - 50px);
-    background-color: firebrick;
+    /* background-color: firebrick; */
     padding: 10px;
+}
+
+.open-ended-question #bottom-container #right-container p {
+    margin-bottom: 5px;
 }
 
 .open-ended-question #bottom-container #right-container input {
@@ -223,31 +274,38 @@ hr {
     height: fit-content;
     margin-top: 15px;
     margin-bottom: 15px;
-    background-color: lime;
+    /* background-color: lime; */
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
 }
 
 .multiple-choice-question #top-container {
     width: 100%;
     height: 50px;
-    background-color: lightgreen;
+    /* background-color: #00ff62; */
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 5px 0px 0px 0px;
     display: flex;
+    /* border-radius: 5px 5px 5px 0px; */
 }
 
 .multiple-choice-question #top-container #question-number-container {
     width: 50px;
     height: 100%;
-    background-color: aqua;
     text-align: center;
     display: grid;
     align-items: center;
+    background-color: #00c74c;
+    border-radius: 5px 0px 0px 0px;
 }
 
 .multiple-choice-question #top-container #question-type-container {
     height: 100%;
     width: calc(100% - 50px - 300px);
-    background-color: cadetblue;
     display: flex;
     align-items: center;
+    background-color: #00ff62;
 }
 
 .multiple-choice-question #top-container #question-type-container p {
@@ -259,44 +317,72 @@ hr {
 .multiple-choice-question #top-container #add-option-container {
     width: 150px;
     height: 100%;
-    background-color: rgb(248, 175, 79);
+    background-color: white;
+    /* border-left: 2px solid rgb(200, 200, 200); */
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.multiple-choice-question #top-container #add-option-container:hover {
+    background-color: #0057ff;
+}
+
+.multiple-choice-question #top-container #add-option-container:hover a {
+    color: white;
 }
 
 .multiple-choice-question #top-container #add-option-container a {
     text-decoration: none;
     user-select: none;
+    transition: 0.2s ease-in-out;
+    color: black;
 }
 
 .multiple-choice-question #top-container #delete-question-container {
     width: 150px;
     height: 100%;
-    background-color: cornflowerblue;
+    background-color: white;
+    border-left: 2px solid rgb(200, 200, 200);
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
+    border-radius: 0px 5px 0px 0px;
+}
+
+.multiple-choice-question #top-container #delete-question-container:hover {
+    background-color: #0057ff;
+}
+
+.multiple-choice-question #top-container #delete-question-container:hover a {
+    color: white;
 }
 
 .multiple-choice-question #top-container #delete-question-container a {
     text-decoration: none;
     user-select: none;
+    transition: 0.2s ease-in-out;
 }
 .multiple-choice-question #bottom-container {
     width: 100%;
     height: calc(100% - 50px);
-    background-color: darkorchid;
+    /* background-color: darkorchid; */
     display: flex;
 }
 
 .multiple-choice-question #bottom-container #left-container {
     width: 50.47px;
     /* width: 50px; */
-    background-color: fuchsia;
+    /* background-color: fuchsia; */
     display: grid;
     align-items: center;
     cursor: grab;
+    background-color: rgb(200, 200, 200);
+    border-radius: 0px 0px 0px 5px;
 }
 
 .kabab-menu{
@@ -304,12 +390,13 @@ hr {
     height: 30px;
     display: grid;
     align-items: center;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 
 .kabab-menu .dot-container div {
     border-radius: 50%;
-    background-color: black;
+    border-color: rgb(50, 50, 50);
+    background-color: rgb(50, 50, 50);
     width: 5px;
     height: 5px;
     float: left;
@@ -319,8 +406,12 @@ hr {
 .multiple-choice-question #bottom-container #right-container {
     height: calc(100% - 20px);
     width: calc(100% - 50px);
-    background-color: firebrick;
+    /* background-color: firebrick; */
     padding: 10px;
+}
+
+.multiple-choice-question #bottom-container #right-container p {
+    margin-bottom: 5px;
 }
 
 .multiple-choice-question #bottom-container #right-container input {
@@ -330,31 +421,49 @@ hr {
 }
 
 .multiple-choice-question #bottom-container #right-container #option-container {
-    margin-top:2.5px;
+    margin-top: 10px;
 }
 
 .multiple-choice-question #bottom-container #right-container #option-container .option {
     display: flex;
     float: left;
     width: 100%;
-    margin-top: 2.5px;
-    margin-bottom:2.5px;
+    margin-top: 5px;
+    margin-bottom:5px;
 }
 
 .multiple-choice-question #bottom-container #right-container #option-container .option p {
-    background-color: blue;
-    width: 150px;
-    text-align: center;
+    /* background-color: blue; */
+    margin-right: 5px;
     display: grid;
     align-items: center;
+    height: 30px;
+    width: 90px
 }
 
+.multiple-choice-question #bottom-container #right-container #option-container .option input {
+    height: 30px;
+    box-sizing: border-box;
+}
 .multiple-choice-question #bottom-container #right-container #option-container .option a {
     width:150px;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
+    border-radius: 5px;
+    border: 1px solid rgb(118, 118, 118);
     text-align: center;
     display: grid;
     align-items: center;
     text-decoration: none;
     user-select: none;
+    margin-left: 10px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 30px;
+}
+
+.multiple-choice-question #bottom-container #right-container #option-container .option a:hover {
+    background-color: #0057ff;
+    color: white;
+    border: 1px solid #0057ff;
 }
