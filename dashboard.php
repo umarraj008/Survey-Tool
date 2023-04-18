@@ -89,6 +89,17 @@
                         $surveys = $surveys->fetchAll();
 
                         foreach($surveys as $survey) {
+
+                            // Get total response count
+                            $surveyID = $survey["survey_ID"];
+
+                            $totalParticipants = $db->query(
+                                "SELECT survey_ID, count(*) as 'count' FROM survey_response WHERE survey_ID='$surveyID'"
+                            );
+                            
+                            $totalParticipants = $totalParticipants->fetchObject();
+                            $totalParticipants = $totalParticipants->count;
+
                             $codeString = "'" . $survey['code'] . "'";
                             ?>
                             <li class="survey-item">

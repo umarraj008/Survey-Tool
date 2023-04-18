@@ -147,7 +147,7 @@
                         <?php
                             if ($survey->status == "0") {
                         ?>
-                            <a onclick="location.href='./php/updateSurvey.php?userID=<?php echo($userID); ?>&surveyID=<?php echo($surveyID); ?>&status=open'"><p><span class="material-symbols-outlined">visibility_on</span>Activate Survey</p></a>
+                            <a onclick="location.href='./php/updateSurvey.php?userID=<?php echo($userID); ?>&surveyID=<?php echo($surveyID); ?>&status=open'"><p><span class="material-symbols-outlined">visibility</span>Activate Survey</p></a>
                         <?php
                             } else if ($survey->status == "1") {
                         ?>        
