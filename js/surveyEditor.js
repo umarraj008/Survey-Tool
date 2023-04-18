@@ -21,6 +21,8 @@ function addQuestion(type) {
             
 
     }
+
+    console.log(numberOfQuestions);
 }
 
 function makeOpenTextBox(index) {
@@ -353,5 +355,5 @@ function deleteQuestion(index) {
     }
 
     //recount number of questions
-    numberOfQuestions = liIds.length;
+    numberOfQuestions = liIds.length+1;
 }
