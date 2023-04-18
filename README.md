@@ -22,6 +22,10 @@ This website is a live survey/focus group tool. This tool allows users to create
 
 5. You should be able to run the website at http://localhost/survey-tool/index.php.
 
+6. If you want a test account you can use mine:
+    email = umar.rajput@hotmail.co.uk
+    password = 123
+
 
 
 ## References
@@ -39,6 +43,10 @@ This website is a live survey/focus group tool. This tool allows users to create
 **Github logo** - https://github.com/logos
 
 **All icons** - https://fonts.google.com/icons?icon.query=done&icon.style=Outlined
+
+**PHP String generator** - https://stackoverflow.com/questions/4570980/generating-a-random-code-in-php
+
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
