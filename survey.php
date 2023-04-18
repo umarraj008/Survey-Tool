@@ -3,6 +3,7 @@
     <head>
         <?php include_once("./includes/headTags.php"); ?>
         <link rel="stylesheet" href="./css/survey.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
     </head>
     <body>
         <!-- Header Section -->
@@ -124,32 +125,35 @@
                                                 </div>
 
                                                 <div id="right-container">
-                                                    <img src="./resources/images/placeholder.png" width="50px" height="50px" />
+                                                    <!-- <img src="./resources/images/placeholder.png" width="50px" height="50px" /> -->
+                                                    <span class="material-symbols-outlined speaker">volume_up</span>
                                                 </div>
 
                                             </div>
                                             <div id="bottom-container">
+                                                <div id="option-container">
 
-                                                <label class="option" for="question<?php echo($index . "option1"); ?>">
-                                                    <input type="radio" form="survey" id="question<?php echo($index . "option1"); ?>" name="MultipleChoice#<?php echo($q->id); ?>#question<?php echo($index); ?>" value="<?php echo($q->options[0]->id); ?>">
-                                                    <?php echo($q->options[0]->text); ?>
-                                                </label>
-                                                
-                                                <label class="option" for="question<?php echo($index . "option2"); ?>">
-                                                    <input type="radio" form="survey" id="question<?php echo($index . "option2"); ?>" name="MultipleChoice#<?php echo($q->id); ?>#question<?php echo($index); ?>" value="<?php echo($q->options[1]->id); ?>">
-                                                    <?php echo($q->options[1]->text); ?>
-                                                </label>
+                                                    <label class="option" for="question<?php echo($index . "option1"); ?>">
+                                                        <input type="radio" form="survey" id="question<?php echo($index . "option1"); ?>" name="MultipleChoice#<?php echo($q->id); ?>#question<?php echo($index); ?>" value="<?php echo($q->options[0]->id); ?>">
+                                                        <?php echo($q->options[0]->text); ?>
+                                                    </label>
+                                                    
+                                                    <label class="option" for="question<?php echo($index . "option2"); ?>">
+                                                        <input type="radio" form="survey" id="question<?php echo($index . "option2"); ?>" name="MultipleChoice#<?php echo($q->id); ?>#question<?php echo($index); ?>" value="<?php echo($q->options[1]->id); ?>">
+                                                        <?php echo($q->options[1]->text); ?>
+                                                    </label>
 
-                                                <label class="option" for="question<?php echo($index . "option3"); ?>">
-                                                    <input type="radio" form="survey" id="question<?php echo($index . "option3"); ?>" name="MultipleChoice#<?php echo($q->id); ?>#question<?php echo($index); ?>" value="<?php echo($q->options[2]->id); ?>">
-                                                    <?php echo($q->options[2]->text); ?>
-                                                </label>
+                                                    <label class="option" for="question<?php echo($index . "option3"); ?>">
+                                                        <input type="radio" form="survey" id="question<?php echo($index . "option3"); ?>" name="MultipleChoice#<?php echo($q->id); ?>#question<?php echo($index); ?>" value="<?php echo($q->options[2]->id); ?>">
+                                                        <?php echo($q->options[2]->text); ?>
+                                                    </label>
 
-                                                <label class="option" for="question<?php echo($index . "option4"); ?>">
-                                                    <input type="radio" form="survey" id="question<?php echo($index . "option4"); ?>" name="MultipleChoice#<?php echo($q->id); ?>#question<?php echo($index); ?>" value="<?php echo($q->options[3]->id); ?>">
-                                                    <?php echo($q->options[3]->text); ?>
-                                                </label>
+                                                    <label class="option" for="question<?php echo($index . "option4"); ?>">
+                                                        <input type="radio" form="survey" id="question<?php echo($index . "option4"); ?>" name="MultipleChoice#<?php echo($q->id); ?>#question<?php echo($index); ?>" value="<?php echo($q->options[3]->id); ?>">
+                                                        <?php echo($q->options[3]->text); ?>
+                                                    </label>
 
+                                                </div>
                                             </div>
                                         </div>
                                     <?php
@@ -164,7 +168,8 @@
                                                 </div>
 
                                                 <div id="right-container">
-                                                    <img src="./resources/images/placeholder.png" width="50px" height="50px" />
+                                                    <!-- <img src="./resources/images/placeholder.png" width="50px" height="50px" /> -->
+                                                    <span class="material-symbols-outlined speaker">volume_up</span>
                                                 </div>
 
                                             </div>
@@ -181,7 +186,11 @@
                             //publish survey button
                             ?>
                                 <div id="send-response-container">
-                                    <input class="button" name="submit" value="Send Resonse" type="submit" form="survey" />
+                                    <button class="button" name="submit" value="Send Resonse" type="submit" form="survey">
+                                        <div>    
+                                            <p><span class="material-symbols-outlined">done</span>Done</p>
+                                        </div>    
+                                    </button>
                                 </div>
 
                             <?php

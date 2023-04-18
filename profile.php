@@ -3,6 +3,7 @@
     <head>
         <?php include_once("./includes/headTags.php"); ?>
         <link rel="stylesheet" href="./css/profile.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
     </head>
     <body>
         <!-- Header Section -->
@@ -37,11 +38,26 @@
                     <h2>Settings</h2>
                     <hr>
                     <div id="input-container">
-                        <input type="button" value="Logout" onclick="location.href='./php/logout.php'" />
-                        <input type="button" value="Reset Password" />
-                        <input type="button" value="Enable MFA" />
-                        <input type="button" value="Delete All Surveys" />
-                        <input type="button" value="Delete Account" />
+                        <button type="button" value="Logout" onclick="location.href='./php/logout.php'">
+                            <p><span class="material-symbols-outlined">logout</span>Logout</p>
+                        </button>
+
+                        <button type="button" value="Reset Password">
+                            <p><span class="material-symbols-outlined">lock_reset</span>Reset Password</p>
+                        </button>
+
+                        <button type="button" value="Enable MFA">
+                            <p><span class="material-symbols-outlined">shield_lock</span>Enable MFA</p>
+                        </button>
+
+                        <button type="button" value="Delete All Surveys">
+                            <p><span class="material-symbols-outlined">delete</span>Delete All Surveys</p>
+                        </button>
+
+                        <button type="button" value="Delete Account">
+                            <p><span class="material-symbols-outlined">delete</span>Delete Account</p>
+                        </button>
+
                     </div>
                 </div>
             </div>

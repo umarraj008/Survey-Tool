@@ -1,0 +1,16 @@
+main h1 {
+    padding-top: 50px;
+    margin-left: 30px;
+}
+
+#main-container {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#main-container .image-container {
+    margin-top: 10px;
+    width: 100%;
+}

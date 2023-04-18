@@ -57,12 +57,12 @@
 
                     <!-- Survey title and description box -->
                     <div id="survey-title-and-description-container">
-                        <div style="background-color: red">
+                        <div>
                             <label>Survey Title</label><br>
                             <textarea name="survey_title" form="survey" placeholder="Survey title goes here..."></textarea><br>
                         </div>
                         <div style="width: 15px; height: 100%;"></div>
-                        <div style="background-color: lime">
+                        <div>
                             <label>Survey Description</label><br>
                             <textarea name="survey_description" form="survey" placeholder="Survey description goes here..."></textarea>
                         </div>

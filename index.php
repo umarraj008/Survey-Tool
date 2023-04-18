@@ -30,20 +30,21 @@
                     </div>
                 </div>
                 <div id="right-container">
-                    <img src="./resources/images/placeholder.png" width="100px" height="100px" />
+                    <img src="./resources/images/surveyGraphic1.png" width="100px" height="100px" />
                 </div>
             </div>
+
+            <hr>
 
             <div id="survey-code-container">
                 <form action="survey.php" method="GET">
                     <h3>Got a survey code?</h3>
                     <p>Enter here:</p>
                     <div id="input-container">
-                        <input type="text" name="id" placeholder="Code goes here...">
+                        <input type="text" name="id" placeholder="Eg. a0bxw5dp">
                         <input type="submit" value="Go">
                     </div>
                 </form>
-
             </div>
         </main>
             

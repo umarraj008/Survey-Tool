@@ -21,6 +21,8 @@ function addQuestion(type) {
             
 
     }
+
+    console.log(numberOfQuestions);
 }
 
 function makeOpenTextBox(index) {
@@ -192,7 +194,7 @@ function makeMultipleChoice(index) {
 
     let optionLabel1 = document.createElement("p");
     optionLabel1.setAttribute("class", "option-label");
-    optionLabel1.innerHTML = "Option 1";
+    optionLabel1.innerHTML = "Option 1:";
 
     let optionInput1 = document.createElement("input");
     optionInput1.setAttribute("class", "optionInput");
@@ -213,7 +215,7 @@ function makeMultipleChoice(index) {
 
     let optionLabel2 = document.createElement("p");
     optionLabel2.setAttribute("class", "option-label");
-    optionLabel2.innerHTML = "Option 2";
+    optionLabel2.innerHTML = "Option 2:";
 
     let optionInput2 = document.createElement("input");
     optionInput2.setAttribute("class", "optionInput");
@@ -234,7 +236,7 @@ function makeMultipleChoice(index) {
 
     let optionLabel3 = document.createElement("p");
     optionLabel3.setAttribute("class", "option-label");
-    optionLabel3.innerHTML = "Option 3";
+    optionLabel3.innerHTML = "Option 3:";
 
     let optionInput3 = document.createElement("input");
     optionInput3.setAttribute("class", "optionInput");
@@ -255,7 +257,7 @@ function makeMultipleChoice(index) {
 
     let optionLabel4 = document.createElement("p");
     optionLabel4.setAttribute("class", "option-label");
-    optionLabel4.innerHTML = "Option 4";
+    optionLabel4.innerHTML = "Option 4:";
 
     let optionInput4 = document.createElement("input");
     optionInput4.setAttribute("class", "optionInput");
@@ -353,5 +355,5 @@ function deleteQuestion(index) {
     }
 
     //recount number of questions
-    numberOfQuestions = liIds.length;
+    numberOfQuestions = liIds.length+1;
 }

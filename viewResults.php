@@ -3,6 +3,7 @@
     <head>
         <?php include_once("./includes/headTags.php"); ?>
         <link rel="stylesheet" href="./css/viewResults.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="./js/TextBoxQuestion.js"></script>
         <script src="./js/surveyResults.js"></script>
@@ -142,22 +143,22 @@
                 </div>
                 <div id="survey-button-group-container">
                     <div id="top-container">
-                        <a>Edit Survey</a>
+                        <a><p><span class="material-symbols-outlined">edit</span>Edit Survey</p></a>
                         <?php
                             if ($survey->status == "0") {
                         ?>
-                            <a onclick="location.href='./php/updateSurvey.php?userID=<?php echo($userID); ?>&surveyID=<?php echo($surveyID); ?>&status=open'">Activate Survey</a>
+                            <a onclick="location.href='./php/updateSurvey.php?userID=<?php echo($userID); ?>&surveyID=<?php echo($surveyID); ?>&status=open'"><p><span class="material-symbols-outlined">visibility</span>Activate Survey</p></a>
                         <?php
                             } else if ($survey->status == "1") {
                         ?>        
-                            <a onclick="location.href='./php/updateSurvey.php?userID=<?php echo($userID); ?>&surveyID=<?php echo($surveyID); ?>&status=close'">Close Survey</a>
+                            <a onclick="location.href='./php/updateSurvey.php?userID=<?php echo($userID); ?>&surveyID=<?php echo($surveyID); ?>&status=close'"><p><span class="material-symbols-outlined">visibility_off</span>Close Survey</p></a>
                         <?php
                             }
                         ?>
                     </div>
                     <div id="bottom-container">
-                        <a>Download Data</a>
-                        <a onclick="location.href='./php/deleteSurvey.php?userID=<?php echo($userID); ?>&surveyID=<?php echo($surveyID); ?>'">Delete Survey</a>
+                        <a><p><span class="material-symbols-outlined">download</span>Download Data</p></a>
+                        <a onclick="location.href='./php/deleteSurvey.php?userID=<?php echo($userID); ?>&surveyID=<?php echo($surveyID); ?>'"><p><span class="material-symbols-outlined">delete</span>Delete Survey</p></a>
                     </div>
                 </div>
             </div>
@@ -178,9 +179,17 @@
                             </div>
                             <div id="text-box-answer-viewer-container" >
                                 <div id="text-box-answer-button-container">
-                                    <a onclick="previousTextBoxAnswer('TextBoxAnswer<?php echo($index); ?>','<?php echo($index); ?>')">Previous</a>
+                                    <a onclick="previousTextBoxAnswer('TextBoxAnswer<?php echo($index); ?>','<?php echo($index); ?>')">
+                                        <div>
+                                            <p id="button-previous"><span class="material-symbols-outlined">navigate_before</span>Previous</p>
+                                        </div>
+                                    </a>
                                     <p id="TextBoxTotal<?php echo($index)?>">0 / 0</p>
-                                    <a onclick="nextTextBoxAnswer('TextBoxAnswer<?php echo($index); ?>','<?php echo($index); ?>')">Next</a>
+                                    <a onclick="nextTextBoxAnswer('TextBoxAnswer<?php echo($index); ?>','<?php echo($index); ?>')">
+                                        <div>
+                                            <p id="button-next">Next<span class="material-symbols-outlined">navigate_next</span></p>
+                                        </div>
+                                    </a>
                                 </div>
                                 <div id="text-box-answer">
                                     <p id="TextBoxAnswer<?php echo($index); ?>">answer</p>
