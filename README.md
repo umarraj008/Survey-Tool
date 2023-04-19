@@ -46,6 +46,8 @@ This website is a live survey/focus group tool. This tool allows users to create
 
 **PHP String generator** - https://stackoverflow.com/questions/4570980/generating-a-random-code-in-php
 
+**Chart.js** - https://www.chartjs.org/
+
 
 ## License
 
