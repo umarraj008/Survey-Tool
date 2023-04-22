@@ -56,7 +56,20 @@ function setTextBoxData(textBoxID, questionIndex, answerString) {
     setTextBoxAnswer(textBoxID, questionIndex-1, 0);
 }
 
+function setTextBoxDataEmpty() {
+    var textBoxQuestion = new TextBoxQuestion();
+    // var answers = answerString.split("#@#");
+    var answers = [];
+    textBoxQuestion.setTextBoxID("");
+    textBoxQuestion.setAnswers(answers);
+    textBoxQuestionList.push(textBoxQuestion);
+}
+
 function setTextBoxAnswer(id, questionIndex, answerIndex) {
+    console.log("id: " + id);
+    console.log("questionIndex: " + questionIndex);
+    console.log("answerIndex: " + answerIndex);
+    console.log(textBoxQuestionList);
     var textBoxAnswer = document.getElementById(id);
     textBoxAnswer.innerHTML = textBoxQuestionList[questionIndex].getAnswer(answerIndex);
     updateTotal(questionIndex);

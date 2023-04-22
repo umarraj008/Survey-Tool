@@ -38,7 +38,7 @@ foreach($_POST as $key=>$value) {
             $q->text = "";
         } else if ($q->type == "TextBox") {
             $q->optionID = "0";
-            $q->text = $value;
+            $q->text = htmlspecialchars($value);
         }
 
         array_push($questions, $q);

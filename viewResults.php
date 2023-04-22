@@ -218,6 +218,8 @@
                         echo("<script>setTextBoxData('TextBoxAnswer" . $index . "', " . $index . ", " . $answerString . ");</script>");
 
                     } else if ($q->type == "MultipleChoice") {
+                        echo("<script>setTextBoxDataEmpty();</script>");
+
             ?>
                         <div class="question-result">
                             <div id="question-text" class="inner-question-container">
