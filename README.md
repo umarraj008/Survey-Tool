@@ -3,7 +3,7 @@
 
 This website is a live survey/focus group tool. This tool allows users to create surveys, and distribute them and gain live data and results on their surveys. In addition, users will be able to gain access to surveys and participate effectively through our web app. We aimed to create an easy and simple to use web application that allows anyone to create or participate in surveys, and easily conduct research.
 
-![Logo](https://github.com/umarraj008/Survey-Tool/blob/main/resources/images/logo.png)
+![Logo](https://github.com/umarraj008/Survey-Tool/blob/main/resources/images/logoSmall.png)
 
 ## Authors
 
