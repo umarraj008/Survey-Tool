@@ -1,4 +1,4 @@
-
+<!-- Footer Section -->
 <footer>
 <br clear="all">
     <div id="outer-container">

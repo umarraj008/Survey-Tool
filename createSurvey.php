@@ -9,6 +9,7 @@
         <?php include_once("./includes/header.php"); ?>
         
         <?php
+            // check if user is logged in
             if (!isset($_SESSION["user"])) {
                 header("Location: ./signup.php");
             }
@@ -26,11 +27,11 @@
                     <br>
                     <li onclick="addQuestion('TextBox')">Text Box</li>
                     <li onclick="addQuestion('MultipleChoice')">Multiple Choice</li>
-                    <li onclick="addQuestion('YesNoChoice')">Yes/No Choice</li>
+                    <li>Yes/No Choice</li>
                     <li>Dropdown Selection</li>
-                    <li>Date of Birth Entry</li>
+                    <li>Date Entry</li>
                     <li>Rating Scale</li>
-                    <li>Linkert Scale</li>
+                    <li>Likert Scale</li>
                     <br>
                     <h2>Preset Questions</h2>
                     <br>

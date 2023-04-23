@@ -1,5 +1,6 @@
 var textBoxQuestionList = [];
 
+// Function to set a questions chart data
 function setChartData(pieCanvas, barCanvas, options, data) {
     pieCanvas = document.getElementById(pieCanvas);
     barCanvas = document.getElementById(barCanvas);
@@ -44,6 +45,7 @@ function setChartData(pieCanvas, barCanvas, options, data) {
     });
 }
 
+// Function to set a questions textbox data
 function setTextBoxData(textBoxID, questionIndex, answerString) {
     var textBoxQuestion = new TextBoxQuestion();
     var answers = answerString.split("#@#");
@@ -56,6 +58,7 @@ function setTextBoxData(textBoxID, questionIndex, answerString) {
     setTextBoxAnswer(textBoxID, questionIndex-1, 0);
 }
 
+// Function used for non textbox questions so that textbox questions work
 function setTextBoxDataEmpty() {
     var textBoxQuestion = new TextBoxQuestion();
     // var answers = answerString.split("#@#");
@@ -65,6 +68,7 @@ function setTextBoxDataEmpty() {
     textBoxQuestionList.push(textBoxQuestion);
 }
 
+// Function to update the current answer that is displayed in a textbox question
 function setTextBoxAnswer(id, questionIndex, answerIndex) {
     console.log("id: " + id);
     console.log("questionIndex: " + questionIndex);
@@ -75,14 +79,17 @@ function setTextBoxAnswer(id, questionIndex, answerIndex) {
     updateTotal(questionIndex);
 }
 
+// Function to make next button work in textbox questions
 function nextTextBoxAnswer(id, questionIndex) {
     setTextBoxAnswer(id, questionIndex-1, textBoxQuestionList[questionIndex-1].nextAnswer());
 }
 
+// Function to make previous button work in textbox questions
 function previousTextBoxAnswer(id, questionIndex) {
     setTextBoxAnswer(id, questionIndex-1, textBoxQuestionList[questionIndex-1].previousAnswer());
 }
 
+// Function to update the answer number in textbox questions
 function updateTotal(questionIndex) {
     var textBoxTotal = document.getElementById("TextBoxTotal" + (questionIndex+1));
     textBoxTotal.innerHTML = textBoxQuestionList[questionIndex].getTotal();

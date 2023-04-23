@@ -1,4 +1,4 @@
-
+// Function to display notificaiton
 function notification(message) {
     var notifCheck = document.getElementById("notification-container");
     
@@ -17,6 +17,7 @@ function notification(message) {
     }
 }
 
+// Function to create notification element
 function createNotification(text) {
     var container = document.createElement("div");
     container.setAttribute("id", "notification-container");

@@ -1,3 +1,4 @@
+// Class to store a questions answers
 class TextBoxQuestion {
     constructor(textBoxID, answers) {
         this.textBoxID = textBoxID;

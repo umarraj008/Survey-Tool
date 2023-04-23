@@ -1,3 +1,4 @@
+<!-- Header Section -->
 <header>
     <div id="outer-container">
         <div id="title-container">

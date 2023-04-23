@@ -18,7 +18,7 @@ This website is a live survey/focus group tool. This tool allows users to create
 
 3. Go to http://localhost/phpmyadmin and create new database called "survey_tool_db".
 
-4. Press import and import the sql dump.
+4. Press import and import the sql dump file: survey_tool_db.sql.
 
 5. You should be able to run the website at http://localhost/survey-tool/index.php.
 

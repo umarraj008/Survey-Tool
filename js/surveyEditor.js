@@ -326,6 +326,7 @@ function makeYesNoChoice(index) {
 
 }
 
+// Function to delete question in survey editor
 function deleteQuestion(index) {
     //delete question
     questionContainer.removeChild(document.getElementById("q" + index));

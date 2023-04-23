@@ -9,6 +9,7 @@
         <?php include_once("./includes/header.php"); ?>
         
         <?php
+            // check if user is logged in 
             if (isset($_SESSION["user"])) {
                 header("Location: ./dashboard.php");
             }
